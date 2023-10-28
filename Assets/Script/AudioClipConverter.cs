@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using System.Linq;
 
 /// <summary>
 /// AudioClip クラスを Wav ファイルのバイナリに変換するクラス
@@ -113,5 +114,57 @@ public static class AudioClipConverter
             default:
                 throw new NotSupportedException(nameof(BitsPerSample));
         }
+    }
+    
+    public static AudioClip CreateAudioClip(byte[] data, int channels, int sampleRate, UInt16 bitPerSample, string audioClipName)
+    {
+        var audioClipData = bitPerSample switch
+        {
+            8 => Create8BITAudioClipData(data),
+            16 => Create16BITAudioClipData(data),
+            32 => Create32BITAudioClipData(data),
+            _ => throw new ArgumentException($"bitPerSample is not supported : bitPerSample = {bitPerSample}")
+        };
+
+        var audioClip = AudioClip.Create(audioClipName, audioClipData.Length, channels, sampleRate, false);
+        audioClip.SetData(audioClipData, 0);
+        return audioClip;
+    }
+
+    private static float[] Create8BITAudioClipData(byte[] data)
+        => data.Select((x, i) => (float) data[i] / sbyte.MaxValue).ToArray();
+
+    private static float[] Create16BITAudioClipData(byte[] data)
+    {
+        var audioClipData = new float[data.Length / 2];
+        var memoryStream = new MemoryStream(data);
+        for(var i = 0;;i++)
+        {
+            var target = new byte[2];
+            var read = memoryStream.Read(target);
+
+            if (read <= 0) break;
+
+            audioClipData[i] = (float) BitConverter.ToInt16(target) / short.MaxValue;
+        }
+
+        return audioClipData;
+    }
+
+    private static float[] Create32BITAudioClipData(byte[] data)
+    {
+        var audioClipData = new float[data.Length / 4];
+        var memoryStream = new MemoryStream(data);
+
+        for(var i = 0;;i++)
+        {
+            var target = new byte[4];
+            var read = memoryStream.Read(target);
+
+            if (read <= 0) break;
+
+            audioClipData[i] = (float) BitConverter.ToInt32(target) / int.MaxValue;
+        }
+        return audioClipData;
     }
 }
