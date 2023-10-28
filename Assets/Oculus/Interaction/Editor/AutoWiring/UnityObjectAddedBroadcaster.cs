@@ -30,8 +30,8 @@ namespace Oculus.Interaction.Editor
     [InitializeOnLoad]
     public static class UnityObjectAddedBroadcaster
     {
-        public static event Action<GameObject> WhenGameObjectHierarchyAdded = (_) => {};
-        public static event Action<Component> WhenComponentAdded = (_) => {};
+        public static event Action<GameObject> WhenGameObjectHierarchyAdded = (_) => { };
+        public static event Action<Component> WhenComponentAdded = (_) => { };
         private static int _objectAddedUndoNestingCounter = 0;
         private static int _objectAddedUndoGroupId = -1;
 

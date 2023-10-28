@@ -3,28 +3,28 @@
 namespace Oculus.Platform
 {
 
-  using Description = System.ComponentModel.DescriptionAttribute;
+    using Description = System.ComponentModel.DescriptionAttribute;
 
-  public enum PartyMicState : int
-  {
-    [Description("UNKNOWN")]
-    Unknown,
+    public enum PartyMicState : int
+    {
+        [Description("UNKNOWN")]
+        Unknown,
 
-    [Description("PARTY")]
-    Party,
+        [Description("PARTY")]
+        Party,
 
-    [Description("APP")]
-    App,
+        [Description("APP")]
+        App,
 
-    [Description("MUTE")]
-    Mute,
+        [Description("MUTE")]
+        Mute,
 
-    [Description("INACTIVE")]
-    Inactive,
+        [Description("INACTIVE")]
+        Inactive,
 
-    [Description("INPUT_SHARED")]
-    InputShared,
+        [Description("INPUT_SHARED")]
+        InputShared,
 
-  }
+    }
 
 }

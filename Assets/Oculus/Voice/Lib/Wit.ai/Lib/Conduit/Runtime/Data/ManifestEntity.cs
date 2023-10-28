@@ -60,12 +60,12 @@ namespace Meta.Conduit
         /// <returns>The Wit entity info object.</returns>
         public WitEntityInfo GetAsInfo()
         {
-            var keywords = new WitEntityKeywordInfo [Values.Count];
+            var keywords = new WitEntityKeywordInfo[Values.Count];
             for (var i = 0; i < Values.Count; ++i)
             {
                 keywords[i] = Values[i].GetAsInfo();
             }
-            
+
             return new WitEntityInfo()
             {
                 name = Name,

@@ -119,7 +119,7 @@ namespace Meta.Conduit.Editor
                 yield break;
             }
 
-            yield return new WaitUntil(()=> requestComplete);
+            yield return new WaitUntil(() => requestComplete);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Meta.Conduit.Editor
             string witData = "";
             if (witIncomingEntity == null)
             {
-                yield return CreateEntityOnWit(manifestEntity, delegate(bool success, string data)
+                yield return CreateEntityOnWit(manifestEntity, delegate (bool success, string data)
                 {
                     result = success;
                     witData = data;
@@ -158,7 +158,7 @@ namespace Meta.Conduit.Editor
 
             result = false;
             yield return AddValuesToWit(manifestEntity.Name, delta,
-                delegate(bool success, string data)
+                delegate (bool success, string data)
                 {
                     result = success;
                     witData = data;
@@ -320,7 +320,7 @@ namespace Meta.Conduit.Editor
                     VLog.W($"Duplicate keyword {keyword.keyword} was found in entity {incomingEntity.Value.name}. Verify entities on Wit.Ai");
                     continue;
                 }
-                
+
                 witEntityKeywords.Add(keyword.keyword, new WitKeyword(keyword));
             }
 
@@ -352,7 +352,7 @@ namespace Meta.Conduit.Editor
                 var synonymsDelta = GetKeywordsDelta(manifestEntityKeywords[commonKeyword],
                     witEntityKeywords[commonKeyword]);
 
-                if(!synonymsDelta.IsEmpty)
+                if (!synonymsDelta.IsEmpty)
                 {
                     delta.Changed.Add(synonymsDelta);
                 }
@@ -424,7 +424,7 @@ namespace Meta.Conduit.Editor
                     continue;
                 }
 
-                yield return new WaitUntil(()=> requestComplete || !string.IsNullOrEmpty(requestError));
+                yield return new WaitUntil(() => requestComplete || !string.IsNullOrEmpty(requestError));
             }
 
             foreach (var changedKeyword in delta.Changed)
@@ -452,7 +452,7 @@ namespace Meta.Conduit.Editor
                         continue;
                     }
 
-                    yield return new WaitUntil(()=> requestComplete || !string.IsNullOrEmpty(requestError));
+                    yield return new WaitUntil(() => requestComplete || !string.IsNullOrEmpty(requestError));
                 }
             }
 

@@ -50,7 +50,7 @@ namespace Oculus.Interaction
             string componentName = component.GetType().Name;
 
             Assert.IsTrue(value,
-                (whereItFailed ?? $"At GameObject <color={ HiglightColor}><b>{ gameObjectName}</b></color>, component <b>{ componentName}</b>. ") +
+                (whereItFailed ?? $"At GameObject <color={HiglightColor}><b>{gameObjectName}</b></color>, component <b>{componentName}</b>. ") +
                 (whyItFailed ?? "") +
                 (howToFix ?? ""));
         }

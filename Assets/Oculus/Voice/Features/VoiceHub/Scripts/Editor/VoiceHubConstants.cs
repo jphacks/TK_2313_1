@@ -11,7 +11,7 @@ namespace Meta.Voice.VSDKHub
     public class VoiceHubConstants
     {
         public const string CONTEXT_VOICE = "Voice SDK";
-        
+
         public static string PAGE_WIT_CONFIGS = "Wit Configurations";
     }
 }

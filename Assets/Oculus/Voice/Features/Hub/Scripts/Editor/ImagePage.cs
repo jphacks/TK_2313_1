@@ -22,7 +22,8 @@ namespace Meta.Voice.Hub
         [SerializeField] private string _prefix;
         [SerializeField] private MetaHubContext _context;
         [SerializeField] private int _priority = 0;
-        [SerializeField] [FormerlySerializedAs("image")]
+        [SerializeField]
+        [FormerlySerializedAs("image")]
         private Texture2D _image;
 
         public string Name => _displayName ?? name;

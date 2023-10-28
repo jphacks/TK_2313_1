@@ -113,7 +113,7 @@ namespace Oculus.Interaction
             block.SetFloat(_glowParameterID, pinchStrength);
             block.SetFloat(_glowMaxLengthID, glowMaxLength);
 
-            block.SetInt(_glowTypeID, (int) _glowType);
+            block.SetInt(_glowTypeID, (int)_glowType);
             block.SetVector(_glowPositionID, glowPosition);
         }
 

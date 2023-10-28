@@ -62,10 +62,10 @@ internal static class OVRProjectSetupStatusIcon
         _visualTree = backendType?.GetProperty("visualTree", bindingFlags);
         _onGuiHandler = containerType?.GetField("m_OnGUIHandler", bindingFlags);
 
-        _iconSuccess = OVREditorUtils.CreateContent("ovr_icon_success.png",  OVRGUIContent.Source.GenericIcons);
-        _iconNeutral = OVREditorUtils.CreateContent("ovr_icon_neutral.png",  OVRGUIContent.Source.GenericIcons);
-        _iconWarning = OVREditorUtils.CreateContent("ovr_icon_warning.png",  OVRGUIContent.Source.GenericIcons);
-        _iconError = OVREditorUtils.CreateContent("ovr_icon_error.png",  OVRGUIContent.Source.GenericIcons);
+        _iconSuccess = OVREditorUtils.CreateContent("ovr_icon_success.png", OVRGUIContent.Source.GenericIcons);
+        _iconNeutral = OVREditorUtils.CreateContent("ovr_icon_neutral.png", OVRGUIContent.Source.GenericIcons);
+        _iconWarning = OVREditorUtils.CreateContent("ovr_icon_warning.png", OVRGUIContent.Source.GenericIcons);
+        _iconError = OVREditorUtils.CreateContent("ovr_icon_error.png", OVRGUIContent.Source.GenericIcons);
         _currentIcon = _iconSuccess;
 
         OVRProjectSetup.ProcessorQueue.OnProcessorCompleted += RefreshData;

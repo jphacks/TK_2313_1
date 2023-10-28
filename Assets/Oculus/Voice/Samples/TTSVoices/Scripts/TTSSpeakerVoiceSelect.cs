@@ -18,7 +18,8 @@ namespace Meta.Voice.Samples.TTSVoices
     /// </summary>
     public class TTSSpeakerVoiceSelect : TTSSpeakerObserver
     {
-        [SerializeField] [Tooltip("Dropdown used for voice selection")]
+        [SerializeField]
+        [Tooltip("Dropdown used for voice selection")]
         private SimpleDropdownList _dropdown;
 
         protected override void Awake()

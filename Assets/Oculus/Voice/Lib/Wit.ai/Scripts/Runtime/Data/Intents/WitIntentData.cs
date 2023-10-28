@@ -18,7 +18,7 @@ namespace Meta.WitAi.Data.Intents
         public string name;
         public float confidence;
 
-        public WitIntentData() {}
+        public WitIntentData() { }
 
         public WitIntentData(WitResponseNode node)
         {

@@ -59,7 +59,7 @@ namespace Meta.Voice.Samples.Shapes
 
         private Step currentStep = Step.Ready;
         internal Step CurrentStep => currentStep;
-        internal string CurrentStepText => steps[(int) currentStep];
+        internal string CurrentStepText => steps[(int)currentStep];
 
         private void OnValidate()
         {
@@ -111,7 +111,7 @@ namespace Meta.Voice.Samples.Shapes
             }
 
 
-            instructionText.text = steps[(int) currentStep];
+            instructionText.text = steps[(int)currentStep];
 #endif
         }
     }
@@ -122,7 +122,7 @@ namespace Meta.Voice.Samples.Shapes
     {
         public override void OnInspectorGUI()
         {
-            var instructions = (ShapeSampleInstructions) target;
+            var instructions = (ShapeSampleInstructions)target;
 
             if (instructions.CurrentStep == ShapeSampleInstructions.Step.Ready)
             {

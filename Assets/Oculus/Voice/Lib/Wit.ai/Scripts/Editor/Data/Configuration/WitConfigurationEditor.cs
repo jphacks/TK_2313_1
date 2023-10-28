@@ -28,7 +28,8 @@ namespace Meta.WitAi.Windows
     {
         private ConduitManifestGenerationManager _conduitManifestGenerationManager;
 
-        public WitConfiguration Configuration {
+        public WitConfiguration Configuration
+        {
             get => _configuration;
             private set
             {
@@ -84,7 +85,7 @@ namespace Meta.WitAi.Windows
             if (_tabs == null)
             {
                 _tabs = _tabTypes.Select(type => (WitConfigurationEditorTab)Activator.CreateInstance(type))
-                    .OrderBy(tab =>tab.TabOrder)
+                    .OrderBy(tab => tab.TabOrder)
                     .ToArray();
             }
 
@@ -175,8 +176,8 @@ namespace Meta.WitAi.Windows
                         _conduitManifestGenerationManager.GenerateManifest(Configuration, true);
                     }
 
-                    GUI.enabled = Configuration.useConduit && _conduitManifestGenerationManager.ManifestAvailable ;
-                    if (WitEditorUI.LayoutTextButton(WitTexts.Texts.ConfigurationConduitSelectManifestLabel) && _conduitManifestGenerationManager.ManifestAvailable )
+                    GUI.enabled = Configuration.useConduit && _conduitManifestGenerationManager.ManifestAvailable;
+                    if (WitEditorUI.LayoutTextButton(WitTexts.Texts.ConfigurationConduitSelectManifestLabel) && _conduitManifestGenerationManager.ManifestAvailable)
                     {
                         Selection.activeObject =
                             AssetDatabase.LoadAssetAtPath<TextAsset>(Configuration.GetManifestEditorPath());
@@ -190,7 +191,7 @@ namespace Meta.WitAi.Windows
 
                     if (isServerTokenValid && !_disableServerPost)
                     {
-                        GUI.enabled = Configuration.useConduit && _conduitManifestGenerationManager.ManifestAvailable  && !_syncInProgress;
+                        GUI.enabled = Configuration.useConduit && _conduitManifestGenerationManager.ManifestAvailable && !_syncInProgress;
                         if (WitEditorUI.LayoutTextButton(WitTexts.Texts.ConfigurationConduitSyncEntitiesLabel))
                         {
                             SyncEntities();
@@ -199,7 +200,7 @@ namespace Meta.WitAi.Windows
                         }
                         if (_isAutoTrainAvailable)
                         {
-                            if (WitEditorUI.LayoutTextButton(WitTexts.Texts.ConfigurationConduitAutoTrainLabel) && _conduitManifestGenerationManager.ManifestAvailable )
+                            if (WitEditorUI.LayoutTextButton(WitTexts.Texts.ConfigurationConduitAutoTrainLabel) && _conduitManifestGenerationManager.ManifestAvailable)
                             {
                                 SyncEntities(() => { AutoTrainOnWitAi(Configuration); });
                             }
@@ -234,7 +235,7 @@ namespace Meta.WitAi.Windows
             {
                 if (string.IsNullOrEmpty(_appName))
                 {
-                    bool isValid =  WitConfigurationUtility.IsServerTokenValid(_serverToken);
+                    bool isValid = WitConfigurationUtility.IsServerTokenValid(_serverToken);
                     GUI.enabled = isValid;
                     if (WitEditorUI.LayoutTextButton(WitTexts.Texts.ConfigurationRefreshButtonLabel))
                     {
@@ -490,12 +491,14 @@ namespace Meta.WitAi.Windows
 
         private void CheckAutoTrainAvailabilityIfNeeded()
         {
-            if (_didCheckAutoTrainAvailability || !WitConfigurationUtility.IsServerTokenValid(_serverToken)) {
+            if (_didCheckAutoTrainAvailability || !WitConfigurationUtility.IsServerTokenValid(_serverToken))
+            {
                 return;
             }
 
             _didCheckAutoTrainAvailability = true;
-            CheckAutoTrainIsAvailable(Configuration, (isAvailable) => {
+            CheckAutoTrainIsAvailable(Configuration, (isAvailable) =>
+            {
                 _isAutoTrainAvailable = isAvailable;
                 Telemetry.LogInstantEvent(Telemetry.TelemetryEventId.CheckAutoTrain, new Dictionary<Telemetry.AnnotationKey, string>
                 {
@@ -510,7 +513,8 @@ namespace Meta.WitAi.Windows
             var assemblyWalker = _conduitManifestGenerationManager.AssemblyWalker;
             var assemblyNames = assemblyWalker.GetAllAssemblies().Select(a => a.FullName).ToList();
             assemblyWalker.AssembliesToIgnore = new HashSet<string>(Configuration.excludedAssemblies);
-            WitMultiSelectionPopup.Show(assemblyNames, assemblyWalker.AssembliesToIgnore, (disabledAssemblies) => {
+            WitMultiSelectionPopup.Show(assemblyNames, assemblyWalker.AssembliesToIgnore, (disabledAssemblies) =>
+            {
                 assemblyWalker.AssembliesToIgnore = new HashSet<string>(disabledAssemblies);
                 Configuration.excludedAssemblies = new List<string>(assemblyWalker.AssembliesToIgnore);
                 _conduitManifestGenerationManager.GenerateManifest(Configuration, false);
@@ -547,7 +551,7 @@ namespace Meta.WitAi.Windows
 
             // Sync
             _syncInProgress = true;
-            EditorUtility.DisplayProgressBar("Conduit Entity Sync", "Generating Manifest.", 0f );
+            EditorUtility.DisplayProgressBar("Conduit Entity Sync", "Generating Manifest.", 0f);
             _conduitManifestGenerationManager.GenerateManifest(Configuration, false);
 
             var manifest = LoadManifest(Configuration.ManifestLocalPath);

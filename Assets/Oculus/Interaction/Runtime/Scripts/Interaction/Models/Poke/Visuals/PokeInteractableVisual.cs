@@ -118,7 +118,7 @@ namespace Oculus.Interaction
                 else
                 {
                     _postProcessInteractor = null;
-                    
+
                     // There are no interactors in hover state. Update component position one last
                     // time to put it at the max offset.
                     UpdateComponentPosition();

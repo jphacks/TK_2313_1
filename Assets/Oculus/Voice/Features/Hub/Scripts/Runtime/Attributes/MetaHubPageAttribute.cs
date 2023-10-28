@@ -18,7 +18,7 @@ namespace Meta.Voice.Hub.Attributes
         public int Priority { get; private set; }
         public string Prefix { get; private set; }
 
-        
+
         public MetaHubPageAttribute(string name = null, string context = "", string prefix = "", int priority = 0)
         {
             Name = name;
@@ -32,7 +32,7 @@ namespace Meta.Voice.Hub.Attributes
     {
         public MetaHubPageScriptableObjectAttribute(string context = "") : base(context: context)
         {
-            
+
         }
     }
 }

@@ -59,7 +59,7 @@ namespace Meta.Voice
         /// </summary>
         /// <param name="newOptions">The request parameters to be used</param>
         /// <param name="newEvents">The request events to be called throughout it's lifecycle</param>
-        protected TranscriptionRequest(TOptions newOptions, TEvents newEvents) : base(newOptions, newEvents) {}
+        protected TranscriptionRequest(TOptions newOptions, TEvents newEvents) : base(newOptions, newEvents) { }
 
         /// <summary>
         /// Set audio input state

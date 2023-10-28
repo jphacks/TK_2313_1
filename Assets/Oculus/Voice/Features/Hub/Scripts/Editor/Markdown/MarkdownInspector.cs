@@ -122,7 +122,7 @@ namespace Meta.Voice.Hub.Markdown
                             if (img.width > windowWidth - padding)
                             {
                                 width = windowWidth - padding;
-                                aspectRatio = img.width / (float) img.height;
+                                aspectRatio = img.width / (float)img.height;
                                 height = width / aspectRatio;
                             }
 

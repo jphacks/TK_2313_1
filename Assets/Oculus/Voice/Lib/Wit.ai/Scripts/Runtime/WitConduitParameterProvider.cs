@@ -15,7 +15,7 @@ using Meta.Conduit;
 
 namespace Meta.WitAi
 {
-    [Obsolete ("Use ParameterProvider.SetSpecializedParameter() instead of this class")]
+    [Obsolete("Use ParameterProvider.SetSpecializedParameter() instead of this class")]
     internal class WitConduitParameterProvider : ParameterProvider
     {
         protected override object GetSpecializedParameter(ParameterInfo formalParameter)

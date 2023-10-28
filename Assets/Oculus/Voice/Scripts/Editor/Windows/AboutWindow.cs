@@ -28,7 +28,7 @@ using UnityEngine;
 
 namespace Meta.Voice
 {
-    [MetaHubPage("About", VoiceHubConstants.CONTEXT_VOICE,  priority: 1000)]
+    [MetaHubPage("About", VoiceHubConstants.CONTEXT_VOICE, priority: 1000)]
     public class AboutWindow : IMetaHubPage
     {
         private Vector2 _offset;

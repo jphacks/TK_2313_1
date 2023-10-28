@@ -99,7 +99,7 @@ namespace Oculus.Interaction.HandGrab.Editor
             float height = end.y - start.y;
             Rect topBar = new Rect(start.x - margin, start.y,
                 margin, 1f);
-            Rect bottomBar = new Rect(start.x- margin, end.y,
+            Rect bottomBar = new Rect(start.x - margin, end.y,
                 margin, 1f);
             Rect leftBar = new Rect(start.x - margin, start.y,
                 1f, height);

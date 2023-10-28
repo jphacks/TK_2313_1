@@ -22,7 +22,7 @@ namespace Meta.Conduit.Editor
         /// The assembly this class wraps.
         /// </summary>
         private readonly Assembly _assembly;
-        
+
         /// <summary>
         /// Initializes the class with a target assembly.
         /// </summary>
@@ -31,7 +31,7 @@ namespace Meta.Conduit.Editor
         {
             this._assembly = assembly;
         }
-        
+
         public string FullName => this._assembly.FullName;
 
         public IEnumerable<Type> GetEnumTypes()

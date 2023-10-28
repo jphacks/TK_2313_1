@@ -45,11 +45,11 @@ namespace Meta.WitAi.Inspectors
             }
             if (target is IVoiceEventProvider)
             {
-                _eventProvider = (IVoiceEventProvider) target;
+                _eventProvider = (IVoiceEventProvider)target;
             }
             if (target is IVoiceActivationHandler)
             {
-                _activationHandler = (IVoiceActivationHandler) target;
+                _activationHandler = (IVoiceActivationHandler)target;
             }
             if (_activationHandler == null)
             {

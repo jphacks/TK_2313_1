@@ -429,7 +429,7 @@ namespace Meta.WitAi
                 string value;
                 if (newSelectionValue > 0 && newSelectionValue < options?.Length)
                 {
-                     value = $"{newSelectionValue}:{options[newSelectionValue]}";
+                    value = $"{newSelectionValue}:{options[newSelectionValue]}";
                 }
                 else
                 {
@@ -485,40 +485,40 @@ namespace Meta.WitAi
 
             // Begin Header
             GUILayout.BeginVertical();
-                GUILayout.BeginHorizontal();
-                    GUILayout.Space(WitStyles.WindowPaddingLeft);
-                    GUILayout.BeginVertical();
-                        GUILayout.Space(WitStyles.WindowPaddingTop);
-                        // Layout header image
-                        if (windowHeader != null)
-                        {
-                            LayoutHeaderButton(windowHeader, windowHeaderUrl, windowInfoUrl);
-                        }
-                        // Layout header label
-                        if (!string.IsNullOrEmpty(windowTitle))
-                        {
-                            LayoutHeaderLabel(windowTitle);
-                        }
-                        // End Header
-                    GUILayout.EndVertical();
-                    GUILayout.Space(WitStyles.WindowPaddingRight);
-                GUILayout.EndHorizontal();
+            GUILayout.BeginHorizontal();
+            GUILayout.Space(WitStyles.WindowPaddingLeft);
+            GUILayout.BeginVertical();
+            GUILayout.Space(WitStyles.WindowPaddingTop);
+            // Layout header image
+            if (windowHeader != null)
+            {
+                LayoutHeaderButton(windowHeader, windowHeaderUrl, windowInfoUrl);
+            }
+            // Layout header label
+            if (!string.IsNullOrEmpty(windowTitle))
+            {
+                LayoutHeaderLabel(windowTitle);
+            }
+            // End Header
+            GUILayout.EndVertical();
+            GUILayout.Space(WitStyles.WindowPaddingRight);
+            GUILayout.EndHorizontal();
             GUILayout.EndVertical();
 
             // Begin Content
             GUILayout.BeginVertical();
-                offset = GUILayout.BeginScrollView(offset);
-                    GUILayout.BeginHorizontal();
-                        GUILayout.Space(WitStyles.WindowPaddingLeft);
-                        GUILayout.BeginVertical(GUILayout.MinWidth(minWidth), GUILayout.MaxWidth(WitStyles.WindowMaxSize));
-                            // Layout content
-                            windowContentLayout?.Invoke();
-                            // End Content
-                        GUILayout.EndVertical();
-                        GUILayout.Space(WitStyles.WindowPaddingRight);
-                    GUILayout.EndHorizontal();
-                    GUILayout.Space(WitStyles.WindowPaddingBottom);
-                GUILayout.EndScrollView();
+            offset = GUILayout.BeginScrollView(offset);
+            GUILayout.BeginHorizontal();
+            GUILayout.Space(WitStyles.WindowPaddingLeft);
+            GUILayout.BeginVertical(GUILayout.MinWidth(minWidth), GUILayout.MaxWidth(WitStyles.WindowMaxSize));
+            // Layout content
+            windowContentLayout?.Invoke();
+            // End Content
+            GUILayout.EndVertical();
+            GUILayout.Space(WitStyles.WindowPaddingRight);
+            GUILayout.EndHorizontal();
+            GUILayout.Space(WitStyles.WindowPaddingBottom);
+            GUILayout.EndScrollView();
             GUILayout.EndVertical();
 
             // Return size

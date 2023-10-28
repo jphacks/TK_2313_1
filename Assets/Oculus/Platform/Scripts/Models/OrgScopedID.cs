@@ -2,21 +2,21 @@
 
 namespace Oculus.Platform.Models
 {
-  using System;
-  using System.Collections;
-  using Oculus.Platform.Models;
-  using System.Collections.Generic;
-  using UnityEngine;
+    using System;
+    using System.Collections;
+    using Oculus.Platform.Models;
+    using System.Collections.Generic;
+    using UnityEngine;
 
-  public class OrgScopedID
-  {
-    public readonly UInt64 ID;
-
-
-    public OrgScopedID(IntPtr o)
+    public class OrgScopedID
     {
-      ID = CAPI.ovr_OrgScopedID_GetID(o);
+        public readonly UInt64 ID;
+
+
+        public OrgScopedID(IntPtr o)
+        {
+            ID = CAPI.ovr_OrgScopedID_GetID(o);
+        }
     }
-  }
 
 }

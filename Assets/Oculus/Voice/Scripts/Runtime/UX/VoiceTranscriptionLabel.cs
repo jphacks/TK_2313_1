@@ -26,7 +26,8 @@ using UnityEngine.UI;
 
 namespace Oculus.VoiceSDK.UX
 {
-    [RequireComponent(typeof(Text))] [ExecuteInEditMode]
+    [RequireComponent(typeof(Text))]
+    [ExecuteInEditMode]
     public class VoiceTranscriptionLabel : MonoBehaviour
     {
         // The label to be updated
@@ -101,7 +102,7 @@ namespace Oculus.VoiceSDK.UX
             }
         }
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         // Refresh prompt
         private void Update()
         {
@@ -110,7 +111,7 @@ namespace Oculus.VoiceSDK.UX
                 SetText(_promptDefault, _promptColor);
             }
         }
-        #endif
+#endif
 
         // Set listening
         private void OnStartListening()

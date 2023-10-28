@@ -234,102 +234,102 @@ static partial class OVRExtensions
 
             // Good, since we can iterate the list without allocating
             case IReadOnlyList<T> list:
-            {
-                var array = new NativeArray<T>(list.Count, allocator, NativeArrayOptions.UninitializedMemory);
-                for (var i = 0; i < array.Length; i++)
                 {
-                    array[i] = list[i];
-                }
+                    var array = new NativeArray<T>(list.Count, allocator, NativeArrayOptions.UninitializedMemory);
+                    for (var i = 0; i < array.Length; i++)
+                    {
+                        array[i] = list[i];
+                    }
 
-                return array;
-            }
+                    return array;
+                }
 
             // HashSet can be iterated without allocation but doesn't conform to any interface that supports it, so
             // it's a special case.
             case HashSet<T> set:
-            {
-                var array = new NativeArray<T>(set.Count, allocator, NativeArrayOptions.UninitializedMemory);
-                var index = 0;
-                foreach (var item in set)
                 {
-                    array[index++] = item;
-                }
+                    var array = new NativeArray<T>(set.Count, allocator, NativeArrayOptions.UninitializedMemory);
+                    var index = 0;
+                    foreach (var item in set)
+                    {
+                        array[index++] = item;
+                    }
 
-                return array;
-            }
+                    return array;
+                }
 
             // Same as HashSet
             case Queue<T> queue:
-            {
-                var array = new NativeArray<T>(queue.Count, allocator, NativeArrayOptions.UninitializedMemory);
-                var index = 0;
-                foreach (var item in queue)
                 {
-                    array[index++] = item;
-                }
+                    var array = new NativeArray<T>(queue.Count, allocator, NativeArrayOptions.UninitializedMemory);
+                    var index = 0;
+                    foreach (var item in queue)
+                    {
+                        array[index++] = item;
+                    }
 
-                return array;
-            }
+                    return array;
+                }
 
             // Less good because we need to allocate to iterate, but we can know the size beforehand
             case IReadOnlyCollection<T> collection:
-            {
-                var array = new NativeArray<T>(collection.Count, allocator, NativeArrayOptions.UninitializedMemory);
-                var index = 0;
-                foreach (var item in collection)
                 {
-                    array[index++] = item;
-                }
+                    var array = new NativeArray<T>(collection.Count, allocator, NativeArrayOptions.UninitializedMemory);
+                    var index = 0;
+                    foreach (var item in collection)
+                    {
+                        array[index++] = item;
+                    }
 
-                return array;
-            }
+                    return array;
+                }
 
             // Same as above
             case ICollection<T> collection:
-            {
-                var array = new NativeArray<T>(collection.Count, allocator, NativeArrayOptions.UninitializedMemory);
-                var index = 0;
-                foreach (var item in collection)
                 {
-                    array[index++] = item;
-                }
+                    var array = new NativeArray<T>(collection.Count, allocator, NativeArrayOptions.UninitializedMemory);
+                    var index = 0;
+                    foreach (var item in collection)
+                    {
+                        array[index++] = item;
+                    }
 
-                return array;
-            }
+                    return array;
+                }
 
             // Fallback to worst case, but only enumerate the collection once
             default:
-            {
-                var count = 0;
-                var capacity = 4;
-                var array = new NativeArray<T>(capacity, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
-                foreach (var item in enumerable)
                 {
-                    if (count == capacity)
+                    var count = 0;
+                    var capacity = 4;
+                    var array = new NativeArray<T>(capacity, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
+                    foreach (var item in enumerable)
                     {
-                        // Grow the array
-                        capacity *= 2;
-                        NativeArray<T> newArray;
-                        using (array)
+                        if (count == capacity)
                         {
-                            newArray = new NativeArray<T>(capacity, Allocator.Temp,
-                                NativeArrayOptions.UninitializedMemory);
-                            NativeArray<T>.Copy(array, newArray, array.Length);
+                            // Grow the array
+                            capacity *= 2;
+                            NativeArray<T> newArray;
+                            using (array)
+                            {
+                                newArray = new NativeArray<T>(capacity, Allocator.Temp,
+                                    NativeArrayOptions.UninitializedMemory);
+                                NativeArray<T>.Copy(array, newArray, array.Length);
+                            }
+
+                            array = newArray;
                         }
 
-                        array = newArray;
+                        array[count++] = item;
                     }
 
-                    array[count++] = item;
+                    using (array)
+                    {
+                        var result = new NativeArray<T>(count, allocator, NativeArrayOptions.UninitializedMemory);
+                        NativeArray<T>.Copy(array, result, count);
+                        return result;
+                    }
                 }
-
-                using (array)
-                {
-                    var result = new NativeArray<T>(count, allocator, NativeArrayOptions.UninitializedMemory);
-                    NativeArray<T>.Copy(array, result, count);
-                    return result;
-                }
-            }
         }
     }
 }

@@ -101,7 +101,7 @@ namespace Meta.WitAi.Data.Configuration
         public static int GetConfigurationIndex(WitConfiguration configuration)
         {
             // Search through configs
-            return Array.FindIndex(WitConfigs, (checkConfig) => checkConfig == configuration );
+            return Array.FindIndex(WitConfigs, (checkConfig) => checkConfig == configuration);
         }
         // Get configuration index
         public static int GetConfigurationIndex(string configurationName)

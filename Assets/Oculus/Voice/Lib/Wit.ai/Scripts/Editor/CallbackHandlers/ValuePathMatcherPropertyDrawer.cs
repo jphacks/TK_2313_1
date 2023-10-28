@@ -38,7 +38,7 @@ namespace Meta.WitAi.CallbackHandlers
             var valueRefProp = property.FindPropertyRelative(Properties.witValueRef);
             if (valueRefProp.objectReferenceValue)
             {
-                return ((WitValue) valueRefProp.objectReferenceValue).path;
+                return ((WitValue)valueRefProp.objectReferenceValue).path;
             }
             return property.FindPropertyRelative(Properties.path).stringValue;
         }
@@ -140,7 +140,7 @@ namespace Meta.WitAi.CallbackHandlers
                     {
                         var id = EditorGUIUtility.GetControlID(FocusType.Passive) + 100;
                         EditorGUIUtility.ShowObjectPicker<WitValue>(
-                            (WitValue) valueRefProp.objectReferenceValue, false, "", id);
+                            (WitValue)valueRefProp.objectReferenceValue, false, "", id);
                     }
                 }
                 else
@@ -225,7 +225,7 @@ namespace Meta.WitAi.CallbackHandlers
         private bool ComparisonMethodsVisible(SerializedProperty property)
         {
             var matchedMethodProperty = property.FindPropertyRelative(Properties.matchMethod);
-            return matchedMethodProperty.enumValueIndex > (int) MatchMethod.RegularExpression;
+            return matchedMethodProperty.enumValueIndex > (int)MatchMethod.RegularExpression;
         }
 
         private bool ComparisonValueVisible(SerializedProperty property)
@@ -241,8 +241,8 @@ namespace Meta.WitAi.CallbackHandlers
                 property.FindPropertyRelative(Properties.comparisonMethod);
 
             var comparisonMethod = comparisonMethodProperty.enumValueIndex;
-            return matchedMethodProperty.enumValueIndex >= (int) MatchMethod.FloatComparison &&
-                   (comparisonMethod == (int) ComparisonMethod.Equals || comparisonMethod == (int) ComparisonMethod.NotEquals);
+            return matchedMethodProperty.enumValueIndex >= (int)MatchMethod.FloatComparison &&
+                   (comparisonMethod == (int)ComparisonMethod.Equals || comparisonMethod == (int)ComparisonMethod.NotEquals);
         }
     }
 }

@@ -230,7 +230,7 @@ namespace Meta.WitAi.Windows
             GUILayout.EndHorizontal();
         }
         // Layout property field
-        protected virtual void LayoutPropertyField(FieldInfo subfield, SerializedProperty subfieldProperty,  GUIContent labelContent, bool canEdit)
+        protected virtual void LayoutPropertyField(FieldInfo subfield, SerializedProperty subfieldProperty, GUIContent labelContent, bool canEdit)
         {
             // If can edit or not array default layout
             if (canEdit || !subfield.FieldType.IsArray || subfieldProperty.arraySize <= 0)

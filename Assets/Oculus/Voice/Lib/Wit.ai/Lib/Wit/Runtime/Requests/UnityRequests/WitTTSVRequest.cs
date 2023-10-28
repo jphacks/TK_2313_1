@@ -24,9 +24,9 @@ namespace Meta.WitAi.Requests
     {
         PCM = 0,
         MPEG = 1,
-        #if OGG_SUPPORT
+#if OGG_SUPPORT
         OGG = 3,
-        #endif
+#endif
         WAV = 2
     }
     public class WitTTSVRequest : WitVRequest
@@ -169,10 +169,10 @@ namespace Meta.WitAi.Requests
         {
             switch (witAudioType)
             {
-                #if OGG_SUPPORT
+#if OGG_SUPPORT
                 case TTSWitAudioType.OGG:
                     return AudioType.OGGVORBIS;
-                #endif
+#endif
                 case TTSWitAudioType.MPEG:
                     return AudioType.MPEG;
                 case TTSWitAudioType.WAV:
@@ -191,10 +191,10 @@ namespace Meta.WitAi.Requests
                 // PCM
                 case TTSWitAudioType.PCM:
                     return "audio/raw";
-                #if OGG_SUPPORT
+#if OGG_SUPPORT
                 // OGG
                 case TTSWitAudioType.OGG:
-                #endif
+#endif
                 // MP3 & WAV
                 case TTSWitAudioType.MPEG:
                 case TTSWitAudioType.WAV:
@@ -234,11 +234,11 @@ namespace Meta.WitAi.Requests
                 // Raw PCM: Supported by Wit.ai & custom unity implementation (DownloadHandlerRawPCM)
                 case TTSWitAudioType.PCM:
                     return true;
-                #if OGG_SUPPORT
+#if OGG_SUPPORT
                 // OGG: Supported by Unity (DownloadHandlerAudioClip) but not by Wit.ai
                 case TTSWitAudioType.OGG:
                     return true;
-                #endif
+#endif
                 // MP3: Supported by Wit.ai but not by Unity (DownloadHandlerAudioClip)
                 case TTSWitAudioType.MPEG:
                     return false;

@@ -44,7 +44,7 @@ namespace Oculus.Interaction.Editor.BuildingBlocks
             interaction.name = $"[BB] {BlockName}";
             BlocksUtils.UpdateForAutoWiring(interaction);
 
-            return  new List<GameObject>() { interaction };
+            return new List<GameObject>() { interaction };
         }
     }
 }

@@ -87,7 +87,7 @@ namespace Oculus.Interaction.Input
 
         protected override void Start()
         {
-            this.BeginStart(ref _started, ()=>base.Start());
+            this.BeginStart(ref _started, () => base.Start());
             this.AssertField(ModifyDataFromSource, nameof(ModifyDataFromSource));
             this.EndStart(ref _started);
         }

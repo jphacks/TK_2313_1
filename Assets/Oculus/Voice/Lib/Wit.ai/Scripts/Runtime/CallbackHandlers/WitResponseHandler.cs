@@ -17,9 +17,9 @@ using UnityEngine.Serialization;
 namespace Meta.WitAi.CallbackHandlers
 {
     [Serializable]
-    public class WitResponseEvent : UnityEvent<WitResponseNode> {}
+    public class WitResponseEvent : UnityEvent<WitResponseNode> { }
     [Serializable]
-    public class WitResponseErrorEvent : UnityEvent<WitResponseNode, string> {}
+    public class WitResponseErrorEvent : UnityEvent<WitResponseNode, string> { }
 
     public abstract class WitResponseHandler : MonoBehaviour
     {
@@ -104,10 +104,10 @@ namespace Meta.WitAi.CallbackHandlers
         // Handle valid
         protected abstract void OnResponseSuccess(WitResponseNode response);
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         // For tests
         public void HandleResponse(WitResponseNode response) => HandleFinalResponse(response);
-        #endif
+#endif
 
         /// <summary>
         /// Refresh confidence range

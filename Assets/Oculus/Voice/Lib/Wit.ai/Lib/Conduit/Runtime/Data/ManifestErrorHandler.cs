@@ -36,7 +36,7 @@ namespace Meta.Conduit
         /// The name of the action as exposed to the backend.
         /// </summary>
         public string Name { get; set; }
-        
+
         /// <summary>
         /// The parameters used by the action.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Meta.Conduit
 
         private bool Equals(ManifestAction other)
         {
-            return this.ID == other.ID && this.Assembly == other.Assembly && this.Name == other.Name && this.Parameters.SequenceEqual(other.Parameters) ;
+            return this.ID == other.ID && this.Assembly == other.Assembly && this.Name == other.Name && this.Parameters.SequenceEqual(other.Parameters);
         }
     }
 }

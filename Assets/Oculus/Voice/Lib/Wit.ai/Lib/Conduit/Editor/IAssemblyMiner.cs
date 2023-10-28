@@ -49,7 +49,7 @@ namespace Meta.Conduit.Editor
         /// <param name="assembly">The assembly to process.</param>
         /// <returns>List of actions extracted.</returns>
         List<ManifestAction> ExtractActions(IConduitAssembly assembly);
-        
+
         /// <summary>
         /// This method extracts all the marked error handlers (methods) in the specified assembly.
         /// </summary>

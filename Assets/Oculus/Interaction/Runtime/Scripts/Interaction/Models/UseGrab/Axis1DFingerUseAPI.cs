@@ -61,7 +61,7 @@ namespace Oculus.Interaction
             return Hand.GetFingerIsPinching(finger) ? Axis.Value() : 0;
         }
 
-#region Inject
+        #region Inject
         public void InjectAllUseFingerPinchPressureApi(IHand hand, IAxis1D axis)
         {
             InjectHand(hand);
@@ -79,6 +79,6 @@ namespace Oculus.Interaction
             Axis = pinchPressure;
             _axis = pinchPressure as UnityEngine.Object;
         }
-#endregion
+        #endregion
     }
 }

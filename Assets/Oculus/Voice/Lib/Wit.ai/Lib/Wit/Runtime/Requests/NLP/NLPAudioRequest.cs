@@ -33,7 +33,7 @@ namespace Meta.Voice
         /// </summary>
         /// <param name="newOptions">The request parameters to be used</param>
         /// <param name="newEvents">The request events to be called throughout it's lifecycle</param>
-        protected NLPAudioRequest(TOptions newOptions, TEvents newEvents) : base(newOptions, newEvents) {}
+        protected NLPAudioRequest(TOptions newOptions, TEvents newEvents) : base(newOptions, newEvents) { }
 
         /// <summary>
         /// Getter for response data
@@ -64,9 +64,9 @@ namespace Meta.Voice
             {
                 return;
             }
-            
+
             if (null != responseData) responseData[WitConstants.HEADER_REQUEST_ID] = Options.RequestId;
-            
+
             // Apply response data
             ApplyResultResponseData(responseData);
 
@@ -101,7 +101,7 @@ namespace Meta.Voice
                 return;
             }
             _isFinalized = true;
-            
+
             if (null != responseData) responseData[WitConstants.HEADER_REQUEST_ID] = Options.RequestId;
 
             // Send partial data if not previously sent

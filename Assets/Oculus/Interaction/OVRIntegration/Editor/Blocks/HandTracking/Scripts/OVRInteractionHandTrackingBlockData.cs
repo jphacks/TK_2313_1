@@ -45,7 +45,7 @@ namespace Oculus.Interaction.Editor.BuildingBlocks
             hands.transform.parent = interactionBlock.transform;
             BlocksUtils.UpdateForAutoWiring(hands);
 
-            return  new List<GameObject>() { hands };
+            return new List<GameObject>() { hands };
         }
     }
 }

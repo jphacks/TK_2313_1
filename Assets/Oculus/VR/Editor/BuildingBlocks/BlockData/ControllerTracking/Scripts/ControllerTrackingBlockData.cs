@@ -47,7 +47,7 @@ namespace Meta.XR.BuildingBlocks.Editor
             rightController.transform.parent = cameraRig.rightControllerAnchor;
             rightController.GetComponent<OVRControllerHelper>().m_controller = OVRInput.Controller.RTouch;
 
-            return new List<GameObject> {leftController, rightController};
+            return new List<GameObject> { leftController, rightController };
         }
     }
 }

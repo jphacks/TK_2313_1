@@ -66,7 +66,7 @@ namespace Meta.Voice.Samples.Chess
         }
 
         [HandleEntityResolutionFailure]
-        public void OnHandleEntityResolutionFailure(string intent , Exception ex)
+        public void OnHandleEntityResolutionFailure(string intent, Exception ex)
         {
             Debug.Log("Failed to resolve parameter for intent " + intent + " with error " + ex.Message);
             errorText.text = ex.Message;

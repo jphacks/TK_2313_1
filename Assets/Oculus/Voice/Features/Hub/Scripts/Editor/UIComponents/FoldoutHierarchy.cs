@@ -6,8 +6,8 @@ using UnityEngine;
 
 namespace Meta.Voice.Hub.UIComponents
 {
-    
-    
+
+
     public class FoldoutHierarchy<T>
     {
         private Dictionary<string, FoldoutGroup<T>> _groups = new Dictionary<string, FoldoutGroup<T>>();
@@ -17,7 +17,7 @@ namespace Meta.Voice.Hub.UIComponents
         {
             string[] parts = path.Split('/');
             FoldoutGroup<T> currentGroup = null;
-            
+
 
             for (int i = 0; i < parts.Length; i++)
             {
@@ -50,7 +50,7 @@ namespace Meta.Voice.Hub.UIComponents
             }
         }
     }
-    
+
     public class FoldoutHierarchyItem<T>
     {
         public string path;
@@ -80,7 +80,7 @@ namespace Meta.Voice.Hub.UIComponents
         {
             child._parent = this;
             _data.Add(data);
-            if(isLeaf) _children.Add(data);
+            if (isLeaf) _children.Add(data);
             else _children.Add(child);
         }
 
@@ -111,13 +111,14 @@ namespace Meta.Voice.Hub.UIComponents
         }
 
         private void DrawExpanded(int indentLevel)
-        {   
+        {
             foreach (var child in _children)
             {
                 if (child is FoldoutGroup<T> foldoutGroup)
                 {
                     foldoutGroup.Draw(indentLevel);
-                } else if (child is FoldoutHierarchyItem<T> leaf)
+                }
+                else if (child is FoldoutHierarchyItem<T> leaf)
                 {
                     GUILayout.BeginHorizontal();
                     if (indentLevel >= 0)

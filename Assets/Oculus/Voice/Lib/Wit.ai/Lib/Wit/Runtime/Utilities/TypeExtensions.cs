@@ -25,7 +25,7 @@ namespace Meta.WitAi
                 }
                 catch
                 {
-                    types = new Type[]{};
+                    types = new Type[] { };
                 }
                 foreach (var type in types)
                 {

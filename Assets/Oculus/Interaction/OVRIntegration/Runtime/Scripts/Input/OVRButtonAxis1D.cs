@@ -104,7 +104,8 @@ namespace Oculus.Interaction
             return _value;
         }
 
-        private float Target {
+        private float Target
+        {
             get
             {
                 if (OVRInput.Get(_button, _controller))

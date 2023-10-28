@@ -21,7 +21,7 @@ using UnityEngine;
 
 namespace Meta.WitAi.TTS.Voices
 {
-    [CustomPropertyDrawer(typeof( TTSWitVoiceSettings))]
+    [CustomPropertyDrawer(typeof(TTSWitVoiceSettings))]
     public class TTSWitVoiceSettingsDrawer : PropertyDrawer
     {
         // Constants for var layout
@@ -43,7 +43,7 @@ namespace Meta.WitAi.TTS.Voices
         private string[] _voiceNames;
 
         // Subfields
-        private static readonly FieldInfo[] _fields = FieldGUI.GetFields(typeof( TTSWitVoiceSettings));
+        private static readonly FieldInfo[] _fields = FieldGUI.GetFields(typeof(TTSWitVoiceSettings));
 
         // Determine height
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)

@@ -112,7 +112,7 @@ namespace Meta.Conduit.Editor
 
             return JsonConvert.SerializeObject(manifest);
         }
- 
+
         private (List<ManifestEntity>, List<ManifestAction>, List<ManifestErrorHandler>) ExtractAssemblyData(IEnumerable<IConduitAssembly> assemblies)
         {
             var entities = new List<ManifestEntity>();

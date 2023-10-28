@@ -24,12 +24,14 @@ namespace Meta.WitAi.TTS.Utilities
     {
         [Header("Queue Events")]
         [Tooltip("Called when a tts request is added to an empty queue")]
-        [SerializeField] [FormerlySerializedAs("OnPlaybackQueueBegin")]
+        [SerializeField]
+        [FormerlySerializedAs("OnPlaybackQueueBegin")]
         private UnityEvent _onPlaybackQueueBegin = new UnityEvent();
         public UnityEvent OnPlaybackQueueBegin => _onPlaybackQueueBegin;
 
         [Tooltip("Called the final request is removed from a queue")]
-        [SerializeField] [FormerlySerializedAs("OnPlaybackQueueComplete")]
+        [SerializeField]
+        [FormerlySerializedAs("OnPlaybackQueueComplete")]
         private UnityEvent _onPlaybackQueueComplete = new UnityEvent();
         public UnityEvent OnPlaybackQueueComplete => _onPlaybackQueueComplete;
 

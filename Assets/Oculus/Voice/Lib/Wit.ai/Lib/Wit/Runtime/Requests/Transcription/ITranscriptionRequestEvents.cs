@@ -12,7 +12,7 @@ using UnityEngine.Events;
 namespace Meta.Voice
 {
     [Serializable]
-    public class TranscriptionRequestEvent : UnityEvent<string> {}
+    public class TranscriptionRequestEvent : UnityEvent<string> { }
 
     /// <summary>
     /// Interface for all specific audio transcription request events

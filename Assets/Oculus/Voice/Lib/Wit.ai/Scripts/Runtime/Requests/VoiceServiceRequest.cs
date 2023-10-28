@@ -29,7 +29,7 @@ namespace Meta.WitAi.Requests
         /// <param name="newInputType">The request input type (text/audio) to be used</param>
         /// <param name="newOptions">The request parameters to be used</param>
         /// <param name="newEvents">The request events to be called throughout it's lifecycle</param>
-        protected VoiceServiceRequest(NLPRequestInputType newInputType, WitRequestOptions newOptions, VoiceServiceRequestEvents newEvents) : base(newInputType, newOptions, newEvents) {}
+        protected VoiceServiceRequest(NLPRequestInputType newInputType, WitRequestOptions newOptions, VoiceServiceRequestEvents newEvents) : base(newInputType, newOptions, newEvents) { }
 
         /// <summary>
         /// The status code returned from the last request
@@ -51,16 +51,16 @@ namespace Meta.WitAi.Requests
                 Results.StatusCode = newCode;
             }
         }
-        
+
         #region Simulation
         protected override bool OnSimulateResponse()
         {
             if (null == simulatedResponse) return false;
-            
+
 
             // Begin calling on main thread if needed
             WatchMainThreadCallbacks();
-            
+
             SimulateResponse();
             return true;
         }
@@ -108,7 +108,7 @@ namespace Meta.WitAi.Requests
         }
 
         #endregion
-        
+
         #region Thread Safety
         // Check performing
         private CoroutineUtility.CoroutinePerformer _performer = null;

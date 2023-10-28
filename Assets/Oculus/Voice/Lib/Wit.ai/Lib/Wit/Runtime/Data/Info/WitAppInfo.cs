@@ -44,11 +44,11 @@ namespace Meta.WitAi.Data.Info
         /// <summary>
         /// True if the application is not publicly accessible
         /// </summary>
-        [SerializeField] [JsonProperty("private")] public bool isPrivate;
+        [SerializeField][JsonProperty("private")] public bool isPrivate;
         /// <summary>
         /// App creation date
         /// </summary>
-        [SerializeField] [JsonProperty("created_at")] public string createdAt;
+        [SerializeField][JsonProperty("created_at")] public string createdAt;
 
         [Header("Training Info")]
         [JsonProperty("training_status")]
@@ -64,39 +64,39 @@ namespace Meta.WitAi.Data.Info
         /// <summary>
         /// Intents that can be determined by this Wit AI application
         /// </summary>
-        #if UNITY_2021_3_2 || UNITY_2021_3_3 || UNITY_2021_3_4 || UNITY_2021_3_5
+#if UNITY_2021_3_2 || UNITY_2021_3_3 || UNITY_2021_3_4 || UNITY_2021_3_5
         [NonReorderable]
-        #endif
+#endif
         public WitIntentInfo[] intents;
         /// <summary>
         /// Entities associated with this Wit AI application
         /// </summary>
-        #if UNITY_2021_3_2 || UNITY_2021_3_3 || UNITY_2021_3_4 || UNITY_2021_3_5
+#if UNITY_2021_3_2 || UNITY_2021_3_3 || UNITY_2021_3_4 || UNITY_2021_3_5
         [NonReorderable]
-        #endif
+#endif
         public WitEntityInfo[] entities;
         /// <summary>
         /// Traits associated with this Wit AI application
         /// </summary>
-        #if UNITY_2021_3_2 || UNITY_2021_3_3 || UNITY_2021_3_4 || UNITY_2021_3_5
+#if UNITY_2021_3_2 || UNITY_2021_3_3 || UNITY_2021_3_4 || UNITY_2021_3_5
         [NonReorderable]
-        #endif
+#endif
         public WitTraitInfo[] traits;
         /// <summary>
         /// All tag groups for an app. Within a group, all tags point to the same app state (as a result of moving tags).
         /// </summary>
-        #if UNITY_2021_3_2 || UNITY_2021_3_3 || UNITY_2021_3_4 || UNITY_2021_3_5
+#if UNITY_2021_3_2 || UNITY_2021_3_3 || UNITY_2021_3_4 || UNITY_2021_3_5
         [NonReorderable]
-        #endif
+#endif
         public WitVersionTagInfo[] versionTags;
 
         [Header("TTS Info")]
         /// <summary>
         /// TTS Voices available for this app on Wit.ai
         /// </summary>
-        #if UNITY_2021_3_2 || UNITY_2021_3_3 || UNITY_2021_3_4 || UNITY_2021_3_5
+#if UNITY_2021_3_2 || UNITY_2021_3_3 || UNITY_2021_3_4 || UNITY_2021_3_5
         [NonReorderable]
-        #endif
+#endif
 
         public WitVoiceInfo[] voices;
     }

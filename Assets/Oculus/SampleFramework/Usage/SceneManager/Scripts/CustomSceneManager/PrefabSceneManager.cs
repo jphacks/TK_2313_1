@@ -28,7 +28,7 @@ public class PrefabSceneManager : MonoBehaviour
     public GameObject FallbackPrefab;
     public float UpdateFrequencySeconds = 5;
 
-    List<(GameObject,OVRLocatable)> _locatableObjects = new List<(GameObject,OVRLocatable)>();
+    List<(GameObject, OVRLocatable)> _locatableObjects = new List<(GameObject, OVRLocatable)>();
 
     void Start()
     {
@@ -135,7 +135,8 @@ public class PrefabSceneManager : MonoBehaviour
 
     IEnumerator UpdateAnchorsPeriodically()
     {
-        while (true) {
+        while (true)
+        {
             foreach (var (gameObject, locatable) in _locatableObjects)
             {
                 var helper = new SceneManagerHelper(gameObject);

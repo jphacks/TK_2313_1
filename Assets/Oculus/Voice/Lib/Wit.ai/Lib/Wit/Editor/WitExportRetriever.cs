@@ -21,17 +21,17 @@ namespace Lib.Wit.Runtime.Data.Info
     {
         // tracks which callbacks have already been registered for a specific export retrieval
         // this is necessary as the equality checks on delegates don't work
-        private static readonly Dictionary<string, List<MethodInfo>> CallbacksPerConfig =  new Dictionary<string, List<MethodInfo>>();
+        private static readonly Dictionary<string, List<MethodInfo>> CallbacksPerConfig = new Dictionary<string, List<MethodInfo>>();
 
         //tracks the delegates to call for each config
-        private static readonly Dictionary<string, List<VRequest.RequestCompleteDelegate<ZipArchive>>> PendingCallbacksPerConfig =  new Dictionary<string, List<VRequest.RequestCompleteDelegate<ZipArchive>>>();
+        private static readonly Dictionary<string, List<VRequest.RequestCompleteDelegate<ZipArchive>>> PendingCallbacksPerConfig = new Dictionary<string, List<VRequest.RequestCompleteDelegate<ZipArchive>>>();
 
         /// <summary>
         /// Retrieves the export for the requested configuration and calls the onComplete once retrieved.
         /// </summary>
         /// <param name="configuration">the config of the app export to be retrieved</param>
         /// <param name="onComplete">the function to call upon successful retrieval</param>
-        public static void GetExport(IWitRequestConfiguration configuration, VRequest.RequestCompleteDelegate<ZipArchive> onComplete )
+        public static void GetExport(IWitRequestConfiguration configuration, VRequest.RequestCompleteDelegate<ZipArchive> onComplete)
         {
             string appId = configuration.GetApplicationId();
             if (string.IsNullOrEmpty(appId)) return; //new config; haven't yet retrieved it.
@@ -56,7 +56,7 @@ namespace Lib.Wit.Runtime.Data.Info
                         return;
                     }
                     var req = new WitInfoVRequest(configuration, false);
-                    req.RequestAppExportZip(exportInfo.uri,appId, OnPendingOnCompletes);
+                    req.RequestAppExportZip(exportInfo.uri, appId, OnPendingOnCompletes);
                 });
             }
         }

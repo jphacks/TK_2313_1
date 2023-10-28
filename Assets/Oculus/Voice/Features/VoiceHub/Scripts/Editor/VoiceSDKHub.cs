@@ -22,7 +22,7 @@ namespace Meta.Voice.VSDKHub
     public class VoiceSDKHubContext : MetaHubContext
     {
     }
-    
+
     public class VoiceSDKHub : MetaHub
     {
         public static readonly List<string> Contexts = new List<string>
@@ -49,7 +49,7 @@ namespace Meta.Voice.VSDKHub
         {
             return VoiceHubConstants.CONTEXT_VOICE + "::" + pageName;
         }
-        
+
         [MenuItem("Oculus/Voice SDK/Voice Hub", false, 1)]
         private static void ShowWindow()
         {

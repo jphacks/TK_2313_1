@@ -471,65 +471,52 @@ public class OVRTrackedKeyboard : MonoBehaviour
             if (OVRPlugin.initialized)
             {
 #endif
-                OVRKeyboard.TrackedKeyboardInfo keyboardInfo;
-                if (OVRKeyboard.GetSystemKeyboardInfo(KeyboardQueryFlags, out keyboardInfo))
+            OVRKeyboard.TrackedKeyboardInfo keyboardInfo;
+            if (OVRKeyboard.GetSystemKeyboardInfo(KeyboardQueryFlags, out keyboardInfo))
+            {
+                bool systemKeyboardSwitched = false;
+                if (SystemKeyboardInfo.Identifier != keyboardInfo.Identifier ||
+                    SystemKeyboardInfo.KeyboardFlags != keyboardInfo.KeyboardFlags)
                 {
-                    bool systemKeyboardSwitched = false;
-                    if (SystemKeyboardInfo.Identifier != keyboardInfo.Identifier ||
-                        SystemKeyboardInfo.KeyboardFlags != keyboardInfo.KeyboardFlags)
+                    Debug.Log(String.Format("New System keyboard info: [{0}] {1} (Flags {2}) ({3} {4})",
+                        keyboardInfo.Identifier, keyboardInfo.Name,
+                        keyboardInfo.KeyboardFlags,
+                        (keyboardInfo.SupportedPresentationStyles &
+                         OVRPlugin.TrackedKeyboardPresentationStyles.Opaque) != 0
+                            ? "Supports Opaque"
+                            : "",
+                        (keyboardInfo.SupportedPresentationStyles &
+                         OVRPlugin.TrackedKeyboardPresentationStyles.MR) != 0
+                            ? "Supports MR"
+                            : ""));
+                    if (TrackingState == TrackedKeyboardState.NoTrackableKeyboard)
                     {
-                        Debug.Log(String.Format("New System keyboard info: [{0}] {1} (Flags {2}) ({3} {4})",
-                            keyboardInfo.Identifier, keyboardInfo.Name,
-                            keyboardInfo.KeyboardFlags,
-                            (keyboardInfo.SupportedPresentationStyles &
-                             OVRPlugin.TrackedKeyboardPresentationStyles.Opaque) != 0
-                                ? "Supports Opaque"
-                                : "",
-                            (keyboardInfo.SupportedPresentationStyles &
-                             OVRPlugin.TrackedKeyboardPresentationStyles.MR) != 0
-                                ? "Supports MR"
-                                : ""));
-                        if (TrackingState == TrackedKeyboardState.NoTrackableKeyboard)
-                        {
-                            SetKeyboardState(TrackedKeyboardState.Offline);
-                        }
-
-                        SystemKeyboardInfo = keyboardInfo;
-                        systemKeyboardSwitched = true;
+                        SetKeyboardState(TrackedKeyboardState.Offline);
                     }
 
-                    bool keyboardExists = (keyboardInfo.KeyboardFlags & OVRPlugin.TrackedKeyboardFlags.Exists) != 0;
-                    if ((keyboardExists && trackingEnabled) || showUntracked)
+                    SystemKeyboardInfo = keyboardInfo;
+                    systemKeyboardSwitched = true;
+                }
+
+                bool keyboardExists = (keyboardInfo.KeyboardFlags & OVRPlugin.TrackedKeyboardFlags.Exists) != 0;
+                if ((keyboardExists && trackingEnabled) || showUntracked)
+                {
+                    bool localKeyboard = (keyboardInfo.KeyboardFlags & OVRPlugin.TrackedKeyboardFlags.Local) != 0;
+                    bool remoteKeyboard = (keyboardInfo.KeyboardFlags & OVRPlugin.TrackedKeyboardFlags.Remote) != 0;
+                    bool connectedKeyboard =
+                        (keyboardInfo.KeyboardFlags & OVRPlugin.TrackedKeyboardFlags.Connected) != 0;
+                    bool shouldBeRunning = remoteKeyboard ||
+                                           (localKeyboard && (!connectionRequired || connectedKeyboard)) ||
+                                           showUntracked;
+
+                    if (KeyboardTrackerIsRunning() && (systemKeyboardSwitched || !shouldBeRunning))
                     {
-                        bool localKeyboard = (keyboardInfo.KeyboardFlags & OVRPlugin.TrackedKeyboardFlags.Local) != 0;
-                        bool remoteKeyboard = (keyboardInfo.KeyboardFlags & OVRPlugin.TrackedKeyboardFlags.Remote) != 0;
-                        bool connectedKeyboard =
-                            (keyboardInfo.KeyboardFlags & OVRPlugin.TrackedKeyboardFlags.Connected) != 0;
-                        bool shouldBeRunning = remoteKeyboard ||
-                                               (localKeyboard && (!connectionRequired || connectedKeyboard)) ||
-                                               showUntracked;
-
-                        if (KeyboardTrackerIsRunning() && (systemKeyboardSwitched || !shouldBeRunning))
-                        {
-                            StopKeyboardTrackingInternal();
-                        }
-
-                        if (!KeyboardTrackerIsRunning() && shouldBeRunning)
-                        {
-                            yield return StartKeyboardTrackingCoroutine();
-                        }
+                        StopKeyboardTrackingInternal();
                     }
-                    else
-                    {
-                        if (KeyboardTrackerIsRunning())
-                        {
-                            StopKeyboardTrackingInternal();
-                        }
 
-                        if (!keyboardExists)
-                        {
-                            SetKeyboardState(TrackedKeyboardState.NoTrackableKeyboard);
-                        }
+                    if (!KeyboardTrackerIsRunning() && shouldBeRunning)
+                    {
+                        yield return StartKeyboardTrackingCoroutine();
                     }
                 }
                 else
@@ -539,10 +526,23 @@ public class OVRTrackedKeyboard : MonoBehaviour
                         StopKeyboardTrackingInternal();
                     }
 
-                    SetKeyboardState(TrackedKeyboardState.ErrorExtensionFailed);
+                    if (!keyboardExists)
+                    {
+                        SetKeyboardState(TrackedKeyboardState.NoTrackableKeyboard);
+                    }
+                }
+            }
+            else
+            {
+                if (KeyboardTrackerIsRunning())
+                {
+                    StopKeyboardTrackingInternal();
                 }
 
-                SystemKeyboardInfo = keyboardInfo;
+                SetKeyboardState(TrackedKeyboardState.ErrorExtensionFailed);
+            }
+
+            SystemKeyboardInfo = keyboardInfo;
 #if !UNITY_ANDROID && !UNITY_EDITOR
             }
 #endif

@@ -98,7 +98,8 @@ namespace Meta.WitAi.Lib
         /// </summary>
         public AudioClip AudioClip { get; private set; }
 
-        [SerializeField] [Tooltip("Sample rate for mic audio to be captured at, it will be resampled using AudioEncoding.samplerate prior to transmission")]
+        [SerializeField]
+        [Tooltip("Sample rate for mic audio to be captured at, it will be resampled using AudioEncoding.samplerate prior to transmission")]
         private int _audioClipSampleRate = 16000;
         public int AudioClipSampleRate
         {
@@ -223,7 +224,7 @@ namespace Meta.WitAi.Lib
 
         private void OnApplicationFocus(bool hasFocus)
         {
-            #if UNITY_ANDROID && !UNITY_EDITOR
+#if UNITY_ANDROID && !UNITY_EDITOR
             if (hasFocus && IsRecording)
             {
                 VLog.D($"Mic was recording and app is resumed, resuming listening on {CurrentDeviceName}");
@@ -235,18 +236,18 @@ namespace Meta.WitAi.Lib
                 VLog.D($"Stopping listening on {CurrentDeviceName} due to loss of focus.");
                 StopMicrophone();
             }
-            #endif
+#endif
         }
 
         private void OnApplicationPause(bool pauseStatus)
         {
-            #if UNITY_ANDROID && !UNITY_EDITOR
+#if UNITY_ANDROID && !UNITY_EDITOR
             if (pauseStatus)
             {
                 VLog.D($"Stopping listening on {CurrentDeviceName} due to application pause.");
                 StopMicrophone();
             }
-            #endif
+#endif
         }
 
         private void OnDestroy()

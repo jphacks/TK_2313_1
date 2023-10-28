@@ -172,7 +172,7 @@ namespace Meta.WitAi
         /// headers, url modifications, or customization of the request.
         /// </summary>
         public static PreSendRequestDelegate onPreSendRequest;
-        public delegate void PreSendRequestDelegate(ref Uri src_uri, out Dictionary<string,string> headers);
+        public delegate void PreSendRequestDelegate(ref Uri src_uri, out Dictionary<string, string> headers);
         /// <summary>
         /// Returns a partial utterance from an in process request
         ///
@@ -298,10 +298,10 @@ namespace Meta.WitAi
 
             // Get uri using override
             var uri = WitVRequest.GetWitUri(Configuration, Path, queryParams);
-            #pragma warning disable CS0618
+#pragma warning disable CS0618
             if (onCustomizeUri != null)
             {
-                #pragma warning disable CS0618
+#pragma warning disable CS0618
                 uri = onCustomizeUri(new UriBuilder(uri));
             }
 
@@ -356,17 +356,17 @@ namespace Meta.WitAi
             // Allow overrides
             onPreSendRequest?.Invoke(ref uri, out headers);
 
-            #if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
             StartUnityRequest(uri, headers);
-            #else
-            #if UNITY_WEBGL && UNITY_EDITOR
+#else
+#if UNITY_WEBGL && UNITY_EDITOR
             if (IsPost)
             {
                 VLog.W("Voice input is not supported in WebGL this functionality is fully enabled at edit time, but may not work at runtime.");
             }
-            #endif
+#endif
             StartThreadedRequest(uri, headers);
-            #endif
+#endif
         }
         #endregion REQUEST
 
@@ -389,7 +389,8 @@ namespace Meta.WitAi
             }
             if (null != postContentType)
             {
-                if (forcedHttpMethodType == null) {
+                if (forcedHttpMethodType == null)
+                {
                     _request.Method = "POST";
                 }
                 _request.ContentType = postContentType;
@@ -545,7 +546,7 @@ namespace Meta.WitAi
 
                 // Write stream error
                 _stackTrace = e.StackTrace;
-                StatusCode = (int) e.Status;
+                StatusCode = (int)e.Status;
                 StatusDescription = e.Message;
                 VLog.W(e);
                 MainThreadCallback(() => HandleFinalNlpResponse(null, StatusDescription));
@@ -636,7 +637,7 @@ namespace Meta.WitAi
                     HttpWebResponse httpResponse = response as HttpWebResponse;
 
                     // Apply status & description
-                    StatusCode = (int) httpResponse.StatusCode;
+                    StatusCode = (int)httpResponse.StatusCode;
                     StatusDescription = httpResponse.StatusDescription;
 
                     // Get stream
@@ -668,14 +669,14 @@ namespace Meta.WitAi
                 {
                     // Apply status & error
                     _stackTrace = e.StackTrace;
-                    StatusCode = (int) e.Status;
+                    StatusCode = (int)e.Status;
                     StatusDescription = e.Message;
                     VLog.W(e);
 
                     // Attempt additional parse
                     if (e.Response is HttpWebResponse errorResponse)
                     {
-                        StatusCode = (int) errorResponse.StatusCode;
+                        StatusCode = (int)errorResponse.StatusCode;
                         try
                         {
                             using (var errorStream = errorResponse.GetResponseStream())
@@ -747,9 +748,9 @@ namespace Meta.WitAi
             {
                 StatusCode = WitConstants.ERROR_CODE_NO_DATA_FROM_SERVER;
                 StatusDescription = $"Server did not return a valid json response.";
-                #if UNITY_EDITOR
+#if UNITY_EDITOR
                 StatusDescription += $"\nActual Response\n{stringResponse}";
-                #endif
+#endif
             }
 
             // Done
@@ -781,7 +782,7 @@ namespace Meta.WitAi
                 case WitConstants.ERROR_CODE_ABORTED:
                     throw new WebException("Request was aborted", WebExceptionStatus.RequestCanceled);
                 default:
-                    throw new WebException("Status changed before response was received.", (WebExceptionStatus) StatusCode);
+                    throw new WebException("Status changed before response was received.", (WebExceptionStatus)StatusCode);
             }
         }
         // Read stream until delimiter is hit
@@ -815,7 +816,7 @@ namespace Meta.WitAi
 
                 // Check if string builder ends with delimiter
                 found = true;
-                for (i=0;i<delLength;i++)
+                for (i = 0; i < delLength; i++)
                 {
                     // Stop checking if not delimiter
                     if (delimiter[i] != results[results.Length - delLength + i])
@@ -839,7 +840,7 @@ namespace Meta.WitAi
         private void ProcessStringResponses(string stringResponse)
         {
             // Split by delimiter
-            foreach (var stringPart in stringResponse.Split(new string[]{WitConstants.ENDPOINT_JSON_DELIMITER}, StringSplitOptions.RemoveEmptyEntries))
+            foreach (var stringPart in stringResponse.Split(new string[] { WitConstants.ENDPOINT_JSON_DELIMITER }, StringSplitOptions.RemoveEmptyEntries))
             {
                 ProcessStringResponse(stringPart);
             }

@@ -22,12 +22,12 @@ namespace Meta.WitAi.Requests
     {
 
     }
-    
+
     /// <summary>
     /// A UnityEvent with a parameter of VoiceServiceRequest
     /// </summary>
     [Serializable]
-    public class VoiceServiceRequestEvent : UnityEvent<VoiceServiceRequest> {}
+    public class VoiceServiceRequestEvent : UnityEvent<VoiceServiceRequest> { }
 
 
     /// <summary>
@@ -60,7 +60,7 @@ namespace Meta.WitAi.Requests
             events.OnUploadProgressChange.AddListener(OnUploadProgressChange);
             events.OnAudioInputStateChange.AddListener(OnAudioInputStateChange);
         }
-        
+
         /// <summary>
         /// Removes all listeners for the provided VoiceServiceRequestEvents event object.
         /// </summary>
@@ -153,12 +153,12 @@ namespace Meta.WitAi.Requests
 
         protected virtual void OnComplete(VoiceServiceRequest request)
         {
-            
+
         }
 
         protected virtual void OnCancel(VoiceServiceRequest request)
         {
-            
+
         }
     }
 }

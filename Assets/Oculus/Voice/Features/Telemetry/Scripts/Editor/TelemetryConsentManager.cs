@@ -85,10 +85,10 @@ namespace Meta.Voice.TelemetryUtilities
 
         private static void StoreConsentPref(bool consented)
         {
-                EditorPrefs.SetBool(TELEMETRY_CONSENT_KEY, consented);
-                EditorPrefs.SetString(TELEMETRY_CONSENT_DATE_KEY, DateTime.UtcNow.ToString(CultureInfo.InvariantCulture));
+            EditorPrefs.SetBool(TELEMETRY_CONSENT_KEY, consented);
+            EditorPrefs.SetString(TELEMETRY_CONSENT_DATE_KEY, DateTime.UtcNow.ToString(CultureInfo.InvariantCulture));
 
-                Telemetry.ConsentProvided = consented;
+            Telemetry.ConsentProvided = consented;
         }
     }
 }

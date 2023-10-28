@@ -22,8 +22,8 @@ namespace Meta.WitAi.Windows
 {
     public class WitUnderstandingViewer : WitConfigurationWindow
     {
-        [FormerlySerializedAs("witHeader")] [SerializeField] private Texture2D _witHeader;
-        [FormerlySerializedAs("responseText")] [SerializeField] private string _responseText;
+        [FormerlySerializedAs("witHeader")][SerializeField] private Texture2D _witHeader;
+        [FormerlySerializedAs("responseText")][SerializeField] private string _responseText;
         private string _utterance;
         private WitResponseNode _response;
         private Dictionary<string, bool> _foldouts;
@@ -46,7 +46,7 @@ namespace Meta.WitAi.Windows
         private enum HamburgerMenu
         {
             None = -1,
-            Save =  0,
+            Save = 0,
             CopyToClipboard = 1,
             CopyRequestID = 2
         }
@@ -149,41 +149,41 @@ namespace Meta.WitAi.Windows
                 _hamburgerButton.imagePosition = ImagePosition.ImageOnly;
             }
 
-            var value = (HamburgerMenu) EditorGUILayout.Popup(-1, HambergerMenuStrings, _hamburgerButton, GUILayout.Width(24));
+            var value = (HamburgerMenu)EditorGUILayout.Popup(-1, HambergerMenuStrings, _hamburgerButton, GUILayout.Width(24));
             switch (value)
             {
                 case HamburgerMenu.Save:
-                {
-                    var path = EditorUtility.SaveFilePanel("Save Response Json", Application.dataPath,
-                        "result", "json");
-                    if (!string.IsNullOrEmpty(path))
                     {
-                        File.WriteAllText(path, _response.ToString());
+                        var path = EditorUtility.SaveFilePanel("Save Response Json", Application.dataPath,
+                            "result", "json");
+                        if (!string.IsNullOrEmpty(path))
+                        {
+                            File.WriteAllText(path, _response.ToString());
 
+                        }
+
+                        break;
                     }
-
-                    break;
-                }
                 case HamburgerMenu.CopyToClipboard:
-                {
-                    EditorGUIUtility.systemCopyBuffer = _response?.ToString() ?? _responseText;
-                    break;
-                }
+                    {
+                        EditorGUIUtility.systemCopyBuffer = _response?.ToString() ?? _responseText;
+                        break;
+                    }
                 case HamburgerMenu.CopyRequestID:
-                {
-                    var requestId = _request?.Options?.RequestId;
-                    if (!string.IsNullOrEmpty(requestId))
                     {
-                        EditorGUIUtility.systemCopyBuffer = requestId;
-                        _status = $"{requestId} copied to clipboard.";
+                        var requestId = _request?.Options?.RequestId;
+                        if (!string.IsNullOrEmpty(requestId))
+                        {
+                            EditorGUIUtility.systemCopyBuffer = requestId;
+                            _status = $"{requestId} copied to clipboard.";
+                        }
+                        else
+                        {
+                            _status = "No request id to copy!";
+                        }
+                        Repaint();
+                        break;
                     }
-                    else
-                    {
-                        _status = "No request id to copy!";
-                    }
-                    Repaint();
-                    break;
-                }
             }
 
             EditorGUILayout.EndHorizontal();
@@ -423,7 +423,7 @@ namespace Meta.WitAi.Windows
         {
             if (null == witResponseNode?.AsObject) return;
 
-            if(string.IsNullOrEmpty(path)) DrawNode(witResponseNode["text"], "text", path);
+            if (string.IsNullOrEmpty(path)) DrawNode(witResponseNode["text"], "text", path);
 
             var names = witResponseNode.AsObject.ChildNodeNames;
             Array.Sort(names);
@@ -545,7 +545,7 @@ namespace Meta.WitAi.Windows
                     var handler = mvhs[i];
                     menu.AddItem(
                         new GUIContent($"Add {name} matcher to {Selection.activeGameObject.name}/Handler {(i + 1)}"),
-                        false, (h) => AddNewEventHandlerPath((WitResponseMatcher) h, path), handler);
+                        false, (h) => AddNewEventHandlerPath((WitResponseMatcher)h, path), handler);
                 }
             }
             else if (mvhs.Length == 1)
@@ -553,7 +553,7 @@ namespace Meta.WitAi.Windows
                 var handler = mvhs[0];
                 menu.AddItem(
                     new GUIContent($"Add {name} matcher to {Selection.activeGameObject.name}'s Response Matcher"),
-                    false, (h) => AddNewEventHandlerPath((WitResponseMatcher) h, path), handler);
+                    false, (h) => AddNewEventHandlerPath((WitResponseMatcher)h, path), handler);
             }
         }
 

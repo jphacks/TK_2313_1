@@ -20,11 +20,11 @@ namespace Meta.Voice.Hub.Inspectors
     [CustomEditor(typeof(Sample))]
     public class SampleEditor : Editor
     {
-        #if VSDK_INTERNAL
+#if VSDK_INTERNAL
         private bool edit = true;
-        #else
+#else
         private bool edit = false;
-        #endif
+#endif
         private Sample _sample;
 
         // Layout
@@ -43,17 +43,17 @@ namespace Meta.Voice.Hub.Inspectors
 
         private void OnEnable()
         {
-            _sample = (Sample) target;
+            _sample = (Sample)target;
         }
 
         public override void OnInspectorGUI()
         {
             DrawSample(_sample, EditorGUIUtility.currentViewWidth - 40f, true);
 
-            #if VSDK_INTERNAL
+#if VSDK_INTERNAL
             GUILayout.Space(16);
             edit = EditorGUILayout.Foldout(edit, "Edit");
-            #endif
+#endif
 
             if (edit)
             {
@@ -290,7 +290,7 @@ namespace Meta.Voice.Hub.Inspectors
             foreach (string fileName in Directory.GetFiles(directory, "*.*", SearchOption.AllDirectories))
             {
                 FileInfo fileInfo = new FileInfo(fileName);
-                sizeInBytes += (ulong) fileInfo.Length;
+                sizeInBytes += (ulong)fileInfo.Length;
             }
             return sizeInBytes;
         }

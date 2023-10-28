@@ -126,7 +126,8 @@ namespace Meta.Voice.Hub
                         prefix += "/";
                     }
                     var path = "/" + prefix + page.info.Name;
-                    _foldoutHierarchy.Add(path, new FoldoutHierarchyItem<PageReference> {
+                    _foldoutHierarchy.Add(path, new FoldoutHierarchyItem<PageReference>
+                    {
                         path = path,
                         item = page,
                         onDraw = _onDrawPage
@@ -151,7 +152,8 @@ namespace Meta.Voice.Hub
                 foreach (var page in _pages)
                 {
                     var path = "/" + page.info.Prefix + page.info.Name;
-                    _foldoutHierarchy.Add(path, new FoldoutHierarchyItem<PageReference> {
+                    _foldoutHierarchy.Add(path, new FoldoutHierarchyItem<PageReference>
+                    {
                         path = path,
                         item = page,
                         onDraw = _onDrawPage
@@ -210,7 +212,7 @@ namespace Meta.Voice.Hub
 
             var method = page.GetType()
                 .GetMethod("OnWindow", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
-            method?.Invoke(page, new object[] {this});
+            method?.Invoke(page, new object[] { this });
             InvokeLifecyle(page, "OnEnable");
         }
 
@@ -249,14 +251,14 @@ namespace Meta.Voice.Hub
 
                 foreach (var parentContext in context.ParentContexts)
                 {
-                    if(parents.Contains(parentContext)) filter.Add(context.Name);
+                    if (parents.Contains(parentContext)) filter.Add(context.Name);
                 }
             }
         }
 
         public void UpdateContextFilter()
         {
-            if(null == _rootPageGroup) _rootPageGroup = new PageGroup(null, DrawPageEntry);
+            if (null == _rootPageGroup) _rootPageGroup = new PageGroup(null, DrawPageEntry);
             _contexts = ContextFinder.FindAllContextAssets<MetaHubContext>();
             _contexts.Sort((a, b) => a.Priority.CompareTo(b.Priority));
             foreach (var context in _contexts)
@@ -315,14 +317,14 @@ namespace Meta.Voice.Hub
                     IMetaHubPage page;
                     if (pageType.IsSubclassOf(typeof(ScriptableObject)))
                     {
-                        page = (IMetaHubPage) ScriptableObject.CreateInstance(pageType);
+                        page = (IMetaHubPage)ScriptableObject.CreateInstance(pageType);
                     }
                     else
                     {
                         page = Activator.CreateInstance(pageType) as IMetaHubPage;
                     }
-                    if(page is IPageInfo info) AddPage(new PageReference { page = page, info = info});
-                    else AddPage(new PageReference { page = page, info = pageInfo});
+                    if (page is IPageInfo info) AddPage(new PageReference { page = page, info = info });
+                    else AddPage(new PageReference { page = page, info = pageInfo });
                 }
             }
 
@@ -366,7 +368,7 @@ namespace Meta.Voice.Hub
             // Draw logo image
             if (logo)
             {
-                float aspectRatio = logo.width / (float) logo.height;
+                float aspectRatio = logo.width / (float)logo.height;
                 GUILayout.Box(logo, GUILayout.Width(_leftPanelWidth), GUILayout.Height(_leftPanelWidth / aspectRatio));
             }
 
@@ -410,7 +412,7 @@ namespace Meta.Voice.Hub
                 }
             }
 
-            if(!string.IsNullOrEmpty(_searchString))
+            if (!string.IsNullOrEmpty(_searchString))
             {
                 for (int i = 0; i < pages.Count; i++)
                 {
@@ -425,21 +427,21 @@ namespace Meta.Voice.Hub
 
         private bool PageInSearch(PageReference page)
         {
-            #if UNITY_2021_1_OR_NEWER
+#if UNITY_2021_1_OR_NEWER
             return page.info.Name.Contains(_searchString, StringComparison.OrdinalIgnoreCase);
-            #else
+#else
             return page.info.Name.ToLower().Contains(_searchString.ToLower());
-            #endif
+#endif
         }
 
         private bool IsGroupInSearch(PageGroup group)
         {
-            #if UNITY_2021_1_OR_NEWER
+#if UNITY_2021_1_OR_NEWER
             return group.Context && group.Context.Name.Contains(_searchString,
                 StringComparison.OrdinalIgnoreCase);
-            #else
+#else
             return group.Context && group.Context.Name.ToLower().Contains(_searchString.ToLower());
-            #endif
+#endif
         }
 
         private bool IsGroupVisible(PageGroup group)
@@ -459,7 +461,7 @@ namespace Meta.Voice.Hub
             {
                 // TODO: We will need to improve this logic.
                 if (!string.IsNullOrEmpty(SelectedPage) && page.PageId == SelectedPage) ActivePage = page.page;
-                else if(string.IsNullOrEmpty(SelectedPage)) ActivePage = page.page;
+                else if (string.IsNullOrEmpty(SelectedPage)) ActivePage = page.page;
                 SelectedPage = page.PageId;
             }
             else if (null == ActivePage)
@@ -518,7 +520,8 @@ namespace Meta.Voice.Hub
 
             if (_selectedPage is ScriptableObjectPage soPage)
             {
-                if(soPage.Editor is IOverrideSize size && Event.current.type == EventType.Layout) {
+                if (soPage.Editor is IOverrideSize size && Event.current.type == EventType.Layout)
+                {
                     size.OverrideWidth = EditorGUIUtility.currentViewWidth - _leftPanelWidth;
                 }
             }

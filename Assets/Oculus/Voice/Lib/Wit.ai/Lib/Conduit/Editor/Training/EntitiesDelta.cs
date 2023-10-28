@@ -20,7 +20,7 @@ namespace Meta.Conduit.Editor
         /// Keywords only on Wit.Ai.
         /// </summary>
         public HashSet<WitKeyword> WitOnly;
-        
+
         /// <summary>
         /// Keywords on on local.
         /// </summary>
@@ -30,7 +30,7 @@ namespace Meta.Conduit.Editor
         /// The keywords that are on both but with different details. This list will be empty if either there are no
         /// common keywords or the common ones match in terms of synonyms.
         /// </summary>
-        
+
         public List<KeywordsDelta> Changed;
 
         /// <summary>

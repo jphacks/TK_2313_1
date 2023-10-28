@@ -46,7 +46,7 @@ namespace Oculus.Interaction
                 Axis = _axis as IAxis1D;
             }
 
-            public void Validate (Component context)
+            public void Validate(Component context)
             {
                 context.AssertField(ActiveState, nameof(ActiveState));
                 context.AssertField(Axis, nameof(Axis));

@@ -171,8 +171,8 @@ namespace Meta.WitAi
             Texts = JsonUtility.FromJson<WitText>(textAsset.text);
 
             // Setup titles
-            HeaderIcon = (Texture2D) Resources.Load("wit-ai-title");
-            TitleIcon = (Texture2D) Resources.Load("witai");
+            HeaderIcon = (Texture2D)Resources.Load("wit-ai-title");
+            TitleIcon = (Texture2D)Resources.Load("witai");
             SetupTitleContent = new GUIContent(WitTexts.Texts.SetupTitleLabel, TitleIcon);
             SettingsTitleContent = new GUIContent(WitTexts.Texts.SettingsTitleLabel, TitleIcon);
             SettingsServerTokenContent = new GUIContent(WitTexts.Texts.SettingsServerTokenLabel, WitTexts.Texts.SettingsServerTokenTooltip);

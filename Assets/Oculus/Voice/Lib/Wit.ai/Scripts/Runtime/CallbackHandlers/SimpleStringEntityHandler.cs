@@ -18,7 +18,8 @@ namespace Meta.WitAi.CallbackHandlers
     {
         [SerializeField] public string entity;
         [SerializeField] public string format;
-        [SerializeField] private StringEntityMatchEvent onIntentEntityTriggered
+        [SerializeField]
+        private StringEntityMatchEvent onIntentEntityTriggered
             = new StringEntityMatchEvent();
 
         public StringEntityMatchEvent OnIntentEntityTriggered => onIntentEntityTriggered;
@@ -56,5 +57,5 @@ namespace Meta.WitAi.CallbackHandlers
     }
 
     [Serializable]
-    public class StringEntityMatchEvent : UnityEvent<string> {}
+    public class StringEntityMatchEvent : UnityEvent<string> { }
 }

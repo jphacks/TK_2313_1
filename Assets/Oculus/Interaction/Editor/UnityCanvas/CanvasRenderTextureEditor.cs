@@ -107,7 +107,7 @@ namespace Oculus.Interaction.UnityCanvas.Editor
 
             if (!isEmpty)
             {
-                AutoFix(AutoFixAnyCamerasRenderingTargetLayers(),AutoFixRemoveRenderingMaskFromCameras,
+                AutoFix(AutoFixAnyCamerasRenderingTargetLayers(), AutoFixRemoveRenderingMaskFromCameras,
                     "Some cameras are rendering using a layer that is specified here as a Rendering layer. This can cause the UI to be rendered twice.");
                 AutoFix(AutoFixAnyRenderersOnUnrenderedLayers(), AutoFixMoveRenderersToMaskedLayers,
                     "Some CanvasRenderers are using a layer that is not included in the rendered LayerMask.");

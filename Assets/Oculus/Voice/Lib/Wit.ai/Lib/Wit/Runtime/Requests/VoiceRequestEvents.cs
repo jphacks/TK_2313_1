@@ -21,7 +21,8 @@ namespace Meta.Voice
         /// Called whenever a request state changes
         /// </summary>
         public TUnityEvent OnStateChange => _onStateChange;
-        [Header("State Events")] [Tooltip("Called whenever a request state changes.")]
+        [Header("State Events")]
+        [Tooltip("Called whenever a request state changes.")]
         [SerializeField] private TUnityEvent _onStateChange = Activator.CreateInstance<TUnityEvent>();
 
         /// <summary>
@@ -65,7 +66,8 @@ namespace Meta.Voice
         /// Called on download progress update
         /// </summary>
         public TUnityEvent OnDownloadProgressChange => _onDownloadProgressChange;
-        [Header("Progress Events")] [Tooltip("Called on download progress update.")]
+        [Header("Progress Events")]
+        [Tooltip("Called on download progress update.")]
         [SerializeField] private TUnityEvent _onDownloadProgressChange = Activator.CreateInstance<TUnityEvent>();
         /// <summary>
         /// Called on upload progress update

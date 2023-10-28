@@ -34,7 +34,8 @@ namespace Meta.WitAi.Configuration
         /// <summary>
         /// Formerly used for request id
         /// </summary>
-        [Obsolete("Use 'RequestId' property instead")] [JsonIgnore]
+        [Obsolete("Use 'RequestId' property instead")]
+        [JsonIgnore]
         public string requestID => RequestId;
 
         /// <summary>

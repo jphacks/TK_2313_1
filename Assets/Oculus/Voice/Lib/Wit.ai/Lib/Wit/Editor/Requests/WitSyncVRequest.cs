@@ -24,7 +24,7 @@ namespace Meta.WitAi.Requests
         public WitSyncVRequest(IWitRequestConfiguration configuration,
             RequestProgressDelegate onDownloadProgress = null,
             RequestFirstResponseDelegate onFirstResponse = null)
-            : base(configuration, null, true, onDownloadProgress, onFirstResponse) {}
+            : base(configuration, null, true, onDownloadProgress, onFirstResponse) { }
 
         /// <summary>
         /// Submits an intent to be added to the current wit app

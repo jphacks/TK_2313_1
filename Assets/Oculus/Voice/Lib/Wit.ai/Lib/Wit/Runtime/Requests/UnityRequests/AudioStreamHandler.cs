@@ -213,11 +213,11 @@ namespace Meta.WitAi.Requests
         {
             if (_errorBytes != null && _errorBytes.Length > 0)
             {
-                return (float) _errorDecoded / _errorBytes.Length;
+                return (float)_errorDecoded / _errorBytes.Length;
             }
             if (ClipStream.TotalSamples > 0)
             {
-                return (float) ClipStream.AddedSamples / ClipStream.TotalSamples;
+                return (float)ClipStream.AddedSamples / ClipStream.TotalSamples;
             }
             return 0f;
         }
@@ -394,8 +394,8 @@ namespace Meta.WitAi.Requests
         {
             switch (decodeType)
             {
-                    case AudioStreamDecodeType.PCM16:
-                        return Mathf.FloorToInt(contentLength / 2f);
+                case AudioStreamDecodeType.PCM16:
+                    return Mathf.FloorToInt(contentLength / 2f);
             }
             return 0;
         }

@@ -2,22 +2,22 @@
 
 namespace Oculus.Platform.Models
 {
-  using System;
-  using System.Collections;
-  using Oculus.Platform.Models;
-  using System.Collections.Generic;
-  using UnityEngine;
+    using System;
+    using System.Collections;
+    using Oculus.Platform.Models;
+    using System.Collections.Generic;
+    using UnityEngine;
 
-  public class SendInvitesResult
-  {
-    /// The list of invites that was sent
-    public readonly ApplicationInviteList Invites;
-
-
-    public SendInvitesResult(IntPtr o)
+    public class SendInvitesResult
     {
-      Invites = new ApplicationInviteList(CAPI.ovr_SendInvitesResult_GetInvites(o));
+        /// The list of invites that was sent
+        public readonly ApplicationInviteList Invites;
+
+
+        public SendInvitesResult(IntPtr o)
+        {
+            Invites = new ApplicationInviteList(CAPI.ovr_SendInvitesResult_GetInvites(o));
+        }
     }
-  }
 
 }

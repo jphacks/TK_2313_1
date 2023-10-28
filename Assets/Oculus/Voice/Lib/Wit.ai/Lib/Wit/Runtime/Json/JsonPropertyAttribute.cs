@@ -10,7 +10,7 @@ using System;
 
 namespace Meta.WitAi.Json
 {
-    [AttributeUsage(validOn:AttributeTargets.Field|AttributeTargets.Property, AllowMultiple = true)]
+    [AttributeUsage(validOn: AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = true)]
     public class JsonPropertyAttribute : Attribute
     {
         /// <summary>

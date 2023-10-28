@@ -33,7 +33,7 @@ namespace Meta.WitAi.CallbackHandlers
             }
             return "";
         }
-        protected override void OnResponseInvalid(WitResponseNode response, string error){}
+        protected override void OnResponseInvalid(WitResponseNode response, string error) { }
         protected override void OnResponseSuccess(WitResponseNode response)
         {
             var text = response["text"].Value;

@@ -23,13 +23,13 @@ namespace Meta.Conduit
         /// The list of the names of all parameters in the provider. 
         /// </summary>
         List<string> AllParameterNames { get; }
-        
+
         /// <summary>
         /// Populates the parameters from a Wit.Ai response node.
         /// Must be called after all parameters have been obtained from Wit.Ai and mapped but before any are read.
         /// </summary>
         void PopulateParametersFromNode(WitResponseNode responseNode);
-        
+
         /// <summary>
         /// Populates the roles mappings between actual parameters and their roles..
         /// Must be called after all parameters have been populated using PopulateParameters but before any are read.

@@ -32,7 +32,7 @@ namespace Meta.Conduit
         {
             this._instanceResolver = instanceResolver;
         }
-        
+
         /// <summary>
         /// Returns a Conduit dispatcher instance. The same instance will be reused past the first request.  
         /// </summary>

@@ -120,8 +120,8 @@ public class PhongPbrMaterialDescriptionPostprocessor : AssetPostprocessor
             var isAlbedoAlphaChannel = floatProperty > float.Epsilon;
             material.SetFloat(SmoothnessTextureChannelPropId, isAlbedoAlphaChannel ? 1.0f : 0.0f);
 
-            var isOpaque = (material.HasProperty("_Mode") && material.GetFloat("_Mode") ==  0.0) ||
-                           (material.HasProperty("_Surface") && material.GetFloat("_Surface") ==  0.0);
+            var isOpaque = (material.HasProperty("_Mode") && material.GetFloat("_Mode") == 0.0) ||
+                           (material.HasProperty("_Surface") && material.GetFloat("_Surface") == 0.0);
             if (isAlbedoAlphaChannel && isOpaque)
             {
                 material.EnableKeyword("_SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A");

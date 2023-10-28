@@ -53,7 +53,7 @@ namespace Meta.XR.BuildingBlocks.Editor
             rightHand.GetComponent<OVRSkeleton>().SetSkeletonType(OVRSkeleton.SkeletonType.HandRight);
             rightHand.GetComponent<OVRMesh>().SetMeshType(OVRMesh.MeshType.HandRight);
 
-            return new List<GameObject> {leftHand, rightHand};
+            return new List<GameObject> { leftHand, rightHand };
         }
     }
 }

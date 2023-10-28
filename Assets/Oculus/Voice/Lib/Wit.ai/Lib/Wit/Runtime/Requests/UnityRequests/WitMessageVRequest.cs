@@ -23,7 +23,7 @@ namespace Meta.WitAi.Requests
         public WitMessageVRequest(IWitRequestConfiguration configuration, string requestId,
             RequestProgressDelegate onDownloadProgress = null,
             RequestFirstResponseDelegate onFirstResponse = null)
-            : base(configuration, requestId, false, onDownloadProgress, onFirstResponse) {}
+            : base(configuration, requestId, false, onDownloadProgress, onFirstResponse) { }
 
         /// <summary>
         /// Voice message request

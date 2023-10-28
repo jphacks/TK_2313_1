@@ -61,7 +61,7 @@ namespace Meta.WitAi
         // Wit link color (Blue if in light non-pro editor mode)
         public static string WitLinkColor = "#ccccff";
         public const string WitLinkKey = "[COLOR]";
-        
+
         // Indentation
         public const float IndentationSpaces = 15f;
 

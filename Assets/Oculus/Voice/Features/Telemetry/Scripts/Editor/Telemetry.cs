@@ -76,9 +76,9 @@ namespace Meta.Voice.TelemetryUtilities
 
         static Telemetry()
         {
-            #if UNITY_EDITOR_WIN
+#if UNITY_EDITOR_WIN
             ConsentProvided = TelemetryConsentManager.ConsentProvided;
-            #endif
+#endif
         }
 
         internal static TelemetryLogLevel LogLevel

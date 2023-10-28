@@ -433,7 +433,7 @@ public class OVRGradleGeneration
                 }
 
                 // Begin thread to time upload and install
-                var thread = new Thread(delegate() { TimeDeploy(); });
+                var thread = new Thread(delegate () { TimeDeploy(); });
                 thread.Start();
             }
         }

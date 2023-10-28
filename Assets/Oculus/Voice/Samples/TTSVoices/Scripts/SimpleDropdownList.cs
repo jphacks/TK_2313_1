@@ -14,8 +14,8 @@ using UnityEngine.UI;
 
 namespace Meta.Voice.Samples.TTSVoices
 {
-    public class SimpleDropdownIndexEvent : UnityEvent<int> {}
-    public class SimpleDropdownOptionEvent : UnityEvent<string> {}
+    public class SimpleDropdownIndexEvent : UnityEvent<int> { }
+    public class SimpleDropdownOptionEvent : UnityEvent<string> { }
 
     /// <summary>
     /// A dropdown ui interface that uses 'UnityEngine.Text' labels and
@@ -24,29 +24,38 @@ namespace Meta.Voice.Samples.TTSVoices
     public class SimpleDropdownList : MonoBehaviour
     {
         [Header("Dropdown Toggle UI")]
-        [SerializeField] [Tooltip("Button used for speaker dropdown toggle")]
+        [SerializeField]
+        [Tooltip("Button used for speaker dropdown toggle")]
         private Toggle _dropdownToggle;
-        [SerializeField] [Tooltip("Button arrow image showing open or closed")]
+        [SerializeField]
+        [Tooltip("Button arrow image showing open or closed")]
         private Transform _dropdownButtonArrowImage;
-        [SerializeField] [Tooltip("Button text to be displayed without option selected")]
+        [SerializeField]
+        [Tooltip("Button text to be displayed without option selected")]
         public string DropdownToggleUnselectedText = "...";
 
         [Header("Dropdown List UI")]
-        [SerializeField] [Tooltip("Canvas used for dropdown popup")]
+        [SerializeField]
+        [Tooltip("Canvas used for dropdown popup")]
         private CanvasGroup _dropdownListPopup;
-        [SerializeField] [Tooltip("Dropdown scroll rect used for the dropdown list")]
+        [SerializeField]
+        [Tooltip("Dropdown scroll rect used for the dropdown list")]
         private ScrollRect _dropdownListScrollRect;
-        [SerializeField] [Tooltip("Prefab used for canvas dropdown list")]
+        [SerializeField]
+        [Tooltip("Prefab used for canvas dropdown list")]
         private Toggle _dropdownListCellPrefab;
-        [SerializeField] [Tooltip("Additional text padding for dropdown cells")]
+        [SerializeField]
+        [Tooltip("Additional text padding for dropdown cells")]
         private float _dropdownCellTextPadding = 2f;
 
-        [SerializeField] [Tooltip("All available options for this dropdown")]
+        [SerializeField]
+        [Tooltip("All available options for this dropdown")]
         private string[] _options;
         public string[] Options => _options;
 
         [Header("Dropdown Default Settings")]
-        [SerializeField] [Tooltip("The current option selected")]
+        [SerializeField]
+        [Tooltip("The current option selected")]
         private int _selectedOptionIndex = -1;
         public int SelectedOptionIndex => _selectedOptionIndex;
 
@@ -63,11 +72,13 @@ namespace Meta.Voice.Samples.TTSVoices
             }
         }
 
-        [SerializeField] [Tooltip("Dropdown callback event for selection by int")]
+        [SerializeField]
+        [Tooltip("Dropdown callback event for selection by int")]
         private SimpleDropdownIndexEvent _onIndexSelected = new SimpleDropdownIndexEvent();
         public SimpleDropdownIndexEvent OnIndexSelected => _onIndexSelected;
 
-        [SerializeField] [Tooltip("Dropdown callback event for selection by option")]
+        [SerializeField]
+        [Tooltip("Dropdown callback event for selection by option")]
         private SimpleDropdownOptionEvent _onOptionSelected = new SimpleDropdownOptionEvent();
         public SimpleDropdownOptionEvent OnOptionSelected => _onOptionSelected;
 
@@ -137,7 +148,7 @@ namespace Meta.Voice.Samples.TTSVoices
             _dropdownToggle.onValueChanged.RemoveListener(OnToggleClick);
         }
 
-        #if ENABLE_LEGACY_INPUT_MANAGER
+#if ENABLE_LEGACY_INPUT_MANAGER
         /// <summary>
         /// Hide if touch outside of the scroll rect & toggle button
         /// </summary>
@@ -165,7 +176,7 @@ namespace Meta.Voice.Samples.TTSVoices
             // Check mouse position screen point
             return RectTransformUtility.RectangleContainsScreenPoint(rectTransform, touchPosition, cam);
         }
-        #endif
+#endif
 
         #region LOAD
         /// <summary>

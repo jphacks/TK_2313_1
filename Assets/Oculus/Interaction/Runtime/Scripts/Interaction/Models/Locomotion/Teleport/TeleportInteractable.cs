@@ -146,7 +146,7 @@ namespace Oculus.Interaction.Locomotion
         public ISurface Surface { get; private set; }
         public IBounds SurfaceBounds { get; private set; }
 
-        [Header("Target", order =-1)]
+        [Header("Target", order = -1)]
         [SerializeField, Optional]
         [Tooltip("A specific point in space where the player should teleport to.")]
         private Transform _targetPoint;

@@ -14,7 +14,7 @@ namespace Meta.Voice.Hub.Utilities
 {
     public static class ContextFinder
     {
-        public static List<T> FindAllContextAssets<T>() where T: ScriptableObject
+        public static List<T> FindAllContextAssets<T>() where T : ScriptableObject
         {
             string[] guids = AssetDatabase.FindAssets("t:" + typeof(T).Name);
             List<T> assets = new List<T>();

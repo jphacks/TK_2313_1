@@ -86,7 +86,7 @@ namespace Meta.WitAi.Lib
 
                 return JsonConvert.DeserializeToken(json);
             }
-            VLog.W("Could not open file named "+ fileName);
+            VLog.W("Could not open file named " + fileName);
             return null;
         }
 

@@ -38,7 +38,7 @@ namespace Meta.Voice.Hub.Inspectors
         private void OnEnable()
         {
             _samples.Clear();
-            _samplePage = (SamplesPage) target;
+            _samplePage = (SamplesPage)target;
             var samples = PageFinder.FindPages(typeof(Sample));
 
             foreach (var so in samples)
@@ -62,7 +62,7 @@ namespace Meta.Voice.Hub.Inspectors
         {
             _scrollOffset = GUILayout.BeginScrollView(_scrollOffset);
             var windowWidth = (OverrideWidth > 0 ? OverrideWidth : EditorGUIUtility.currentViewWidth) - _minTileMargin;
-            var columns = (int) (windowWidth / (_tileSize + _minTileMargin));
+            var columns = (int)(windowWidth / (_tileSize + _minTileMargin));
             int col = 0;
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();

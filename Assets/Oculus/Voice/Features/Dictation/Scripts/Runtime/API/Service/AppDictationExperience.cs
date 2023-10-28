@@ -115,7 +115,7 @@ namespace Oculus.Voice.Dictation
             {
                 if (_dictationServiceImpl is PlatformDictationImpl)
                 {
-                    ((PlatformDictationImpl) _dictationServiceImpl).Disconnect();
+                    ((PlatformDictationImpl)_dictationServiceImpl).Disconnect();
                 }
 
                 if (_voiceSDKLogger is VoiceSDKPlatformLoggerImpl)
@@ -277,7 +277,7 @@ namespace Oculus.Voice.Dictation
         /// </summary>
         public void Toggle()
         {
-            if(Active) Deactivate();
+            if (Active) Deactivate();
             else Activate();
         }
 
