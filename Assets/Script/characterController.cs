@@ -27,6 +27,14 @@ public class characterController : MonoBehaviour
         {
             animator.SetInteger("State", 2);    // óxÇÈ
         }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            animator.SetInteger("State", 3);    // èIÇÌÇË
+        }
+        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            animator.SetTrigger("SleepTrigger");  // ç¿ÇÈ
+        }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             animator.SetTrigger("SitTrigger");  // ç¿ÇÈ
