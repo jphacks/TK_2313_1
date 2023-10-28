@@ -219,7 +219,7 @@ internal class OVRProjectSetupDrawer
 
 
     private static readonly OVRGUIContent DocumentationIcon =
-        OVREditorUtils.CreateContent("ovr_icon_documentation.png",  OVRGUIContent.Source.GenericIcons, "Go to Documentation");
+        OVREditorUtils.CreateContent("ovr_icon_documentation.png", OVRGUIContent.Source.GenericIcons, "Go to Documentation");
 
     private const string OutstandingItems = "Outstanding Issues";
     private const string RecommendedItems = "Recommended Items";

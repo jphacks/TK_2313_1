@@ -24,7 +24,7 @@ namespace Meta.Conduit
         /// Example values for the attribute. This may increase the accuracy of recognition. 
         /// </summary>
         public List<string> Examples { get; }
-        
+
         /// <summary>
         /// Additional names that can refer to this parameter.
         /// </summary>

@@ -59,7 +59,7 @@ namespace Oculus.Interaction.GrabAPI
                 UpdateTipPosition(hand);
                 PinchStrength = hand.GetFingerPinchStrength(_finger);
                 bool isPinching = hand.GetFingerIsPinching(_finger);
-                if(isPinching != IsPinching)
+                if (isPinching != IsPinching)
                 {
                     IsPinchingChanged = true;
                 }

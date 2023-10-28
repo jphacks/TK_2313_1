@@ -59,11 +59,11 @@ namespace Meta.WitAi.Lib
         private void OnStartRecording()
         {
             // Get root
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             string path = Application.dataPath.Replace("\\", "/").Replace("/Assets", "");
-            #else
+#else
             string path = Application.temporaryCachePath;
-            #endif
+#endif
 
             // Add & create directory
             path += "/" + fileDirectory;
@@ -104,9 +104,9 @@ namespace Meta.WitAi.Lib
             // Convert float to Int16
             for (int i = 0; i < sample.Length; i++)
             {
-                short data = (short) (sample[i] * FLOAT_TO_SHORT);
-                _buffer[i * BYTES_PER_SHORT] = (byte) data;
-                _buffer[i * BYTES_PER_SHORT + 1] = (byte) (data >> 8);
+                short data = (short)(sample[i] * FLOAT_TO_SHORT);
+                _buffer[i * BYTES_PER_SHORT] = (byte)data;
+                _buffer[i * BYTES_PER_SHORT + 1] = (byte)(data >> 8);
             }
 
             // Write data

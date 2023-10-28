@@ -28,13 +28,13 @@ namespace Meta.Voice.Hub.UIComponents
 
         private void Repaint()
         {
-            if(_editorWindow) _editorWindow.Repaint();
+            if (_editorWindow) _editorWindow.Repaint();
             else if (_editor) _editor.Repaint();
         }
 
         public void Draw(Texture2D image)
         {
-            GUILayout.Box("",GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+            GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
 
             var windowRect = GUILayoutUtility.GetLastRect();
             if (windowRect.width <= 1 && windowRect.height <= 1) return;
@@ -44,7 +44,7 @@ namespace Meta.Voice.Hub.UIComponents
                 EditorGUILayout.HelpBox("No Texture2D assigned.", MessageType.Info);
                 return;
             }
-            
+
             // Handle input for panning and zooming
             HandleInput();
 
@@ -62,17 +62,17 @@ namespace Meta.Voice.Hub.UIComponents
 
             if (imageWidth < windowRect.width) pan.x = (windowRect.width - imageWidth) / 2.0f;
             else if (pan.x + imageWidth < windowRect.width) pan.x += windowRect.width - (pan.x + imageWidth);
-            
+
             if (imageHeight < windowRect.height) pan.y = (windowRect.height - imageHeight) / 2.0f;
             else if (pan.y + imageHeight < windowRect.height) pan.y += windowRect.height - (pan.y + imageHeight);
 
             if (pan.x > 0) pan.x = 0;
             if (pan.y > 0) pan.y = 0;
-            
+
             if (imageHeight < windowRect.height) pan.y = (windowRect.height - imageHeight) / 2.0f;
-            
+
             GUI.DrawTexture(new Rect(pan.x, pan.y, image.width * zoom, image.height * zoom), image, ScaleMode.ScaleAndCrop);
-            
+
             GUI.EndGroup();
         }
 

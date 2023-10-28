@@ -78,7 +78,8 @@ namespace Meta.WitAi.Windows
         /// Most services have a common way of querying their service name.  For those that don't,
         /// override this method.  The name is cached after first query.
         /// </summary>
-        public virtual string ServiceName {
+        public virtual string ServiceName
+        {
             get
             {
                 // Has the service name been cached to the local variable yet?

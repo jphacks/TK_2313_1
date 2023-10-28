@@ -25,7 +25,9 @@ namespace Meta.WitAi.Dictation.Events
         /// </summary>
         [Tooltip("Called when an individual dictation session has started. This can include multiple server activations if dictation is set up to automatically reactivate when the server endpoints an utterance.")]
         [EventCategory(EVENT_CATEGORY_DICTATION_EVENTS)]
-        [FormerlySerializedAs("onDictationSessionStarted")] [SerializeField] [HideInInspector]
+        [FormerlySerializedAs("onDictationSessionStarted")]
+        [SerializeField]
+        [HideInInspector]
         private DictationSessionEvent _onDictationSessionStarted = new DictationSessionEvent();
         public DictationSessionEvent OnDictationSessionStarted => _onDictationSessionStarted;
 
@@ -34,7 +36,9 @@ namespace Meta.WitAi.Dictation.Events
         /// </summary>
         [Tooltip("Called when a dictation is completed after Deactivate has been called or auto-reactivate is disabled.")]
         [EventCategory(EVENT_CATEGORY_DICTATION_EVENTS)]
-        [FormerlySerializedAs("onDictationSessionStopped")] [SerializeField] [HideInInspector]
+        [FormerlySerializedAs("onDictationSessionStopped")]
+        [SerializeField]
+        [HideInInspector]
         private DictationSessionEvent _onDictationSessionStopped = new DictationSessionEvent();
         public DictationSessionEvent OnDictationSessionStopped => _onDictationSessionStopped;
 

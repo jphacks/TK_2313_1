@@ -80,10 +80,11 @@ namespace Meta.Conduit.Editor
         /// <inheritdoc/>
         public IEnumerable<IConduitAssembly> GetTargetAssemblies()
         {
-            if (AssembliesToIgnore != null && AssembliesToIgnore.Any()) {
+            if (AssembliesToIgnore != null && AssembliesToIgnore.Any())
+            {
                 return GetAllAssemblies().Where(assembly => !AssembliesToIgnore.Contains(assembly.FullName));
             }
-            
+
             return GetAllAssemblies();
         }
 
@@ -91,7 +92,7 @@ namespace Meta.Conduit.Editor
         public IEnumerable<Assembly> GetCompilationAssemblies(AssembliesType assembliesType)
         {
             GenerateExcludedAssembliesShortNames();
-            
+
             if (_compilationAssemblies == null)
             {
                 _compilationAssemblies = CompilationPipeline.GetAssemblies(assembliesType);
@@ -129,7 +130,7 @@ namespace Meta.Conduit.Editor
             singleUnit = false;
             return false;
         }
-        
+
         private void GenerateExcludedAssembliesShortNames()
         {
             _shortAssemblyNamesToIgnore.Clear();

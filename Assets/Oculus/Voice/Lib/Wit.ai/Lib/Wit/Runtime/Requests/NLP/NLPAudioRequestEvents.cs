@@ -22,7 +22,8 @@ namespace Meta.Voice
         /// Called on request language processing while audio is still being analyzed
         /// </summary>
         public NLPRequestResponseEvent OnPartialResponse => _onPartialResponse;
-        [Header("NLP Events")] [Tooltip("Called every time audio input changes states.")]
+        [Header("NLP Events")]
+        [Tooltip("Called every time audio input changes states.")]
         [SerializeField] private NLPRequestResponseEvent _onPartialResponse = Activator.CreateInstance<NLPRequestResponseEvent>();
 
         /// <summary>

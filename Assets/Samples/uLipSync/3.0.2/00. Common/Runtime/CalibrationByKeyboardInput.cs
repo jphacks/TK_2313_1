@@ -3,26 +3,26 @@
 namespace uLipSync
 {
 
-[RequireComponent(typeof(uLipSync))]
-public class CalibrationByKeyboardInput : MonoBehaviour
-{
-    uLipSync _lipSync;
-
-    void Start()
+    [RequireComponent(typeof(uLipSync))]
+    public class CalibrationByKeyboardInput : MonoBehaviour
     {
-        _lipSync = GetComponent<uLipSync>();
-    }
+        uLipSync _lipSync;
 
-    void Update()
-    {
-        if (!_lipSync) return;
-
-        for (int i = 0; i < _lipSync.profile.mfccs.Count; ++i)
+        void Start()
         {
-            var key = (KeyCode)((int)(KeyCode.Alpha1) + i);
-            if (Input.GetKey(key)) _lipSync.RequestCalibration(i);
+            _lipSync = GetComponent<uLipSync>();
+        }
+
+        void Update()
+        {
+            if (!_lipSync) return;
+
+            for (int i = 0; i < _lipSync.profile.mfccs.Count; ++i)
+            {
+                var key = (KeyCode)((int)(KeyCode.Alpha1) + i);
+                if (Input.GetKey(key)) _lipSync.RequestCalibration(i);
+            }
         }
     }
-}
 
 }

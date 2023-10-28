@@ -19,15 +19,17 @@ namespace Meta.Voice.Samples.TTSVoices
     public class TTSSpeakerEffectSelect : TTSSpeakerObserver
     {
         [Header("Effect Settings")]
-        [SerializeField] [Tooltip("Dropdown used for character selection")]
+        [SerializeField]
+        [Tooltip("Dropdown used for character selection")]
         private SimpleDropdownList _characterDropdown;
-        [SerializeField] [Tooltip("Dropdown used for environment selection")]
+        [SerializeField]
+        [Tooltip("Dropdown used for environment selection")]
         private SimpleDropdownList _environmentDropdown;
 
         // Supported IDs
         private const string NONE_ID = "NONE";
-        private static readonly string[] CHARACTER_IDS = new [] {NONE_ID, "CHIPMUNK", "MONSTER", "ROBOT", "DAEMON"};
-        private static readonly string[] ENVIRONMENT_IDS = new [] {NONE_ID, "REVERB", "ROOM", "PHONE", "PA", "CATHEDRAL"};
+        private static readonly string[] CHARACTER_IDS = new[] { NONE_ID, "CHIPMUNK", "MONSTER", "ROBOT", "DAEMON" };
+        private static readonly string[] ENVIRONMENT_IDS = new[] { NONE_ID, "REVERB", "ROOM", "PHONE", "PA", "CATHEDRAL" };
 
         protected override void OnEnable()
         {

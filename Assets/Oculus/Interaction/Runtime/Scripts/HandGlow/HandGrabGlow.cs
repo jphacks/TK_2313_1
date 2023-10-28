@@ -202,7 +202,7 @@ namespace Oculus.Interaction
                 block.SetFloat(_fingersGlowIDs[i], Mathf.Clamp01(_glowStregth[i]));
             }
 
-            block.SetInt(_glowTypeID, (int) _glowType);
+            block.SetInt(_glowTypeID, (int)_glowType);
         }
 
         private void UpdateFingerGlowStrength(int fingerIndex, float strength)

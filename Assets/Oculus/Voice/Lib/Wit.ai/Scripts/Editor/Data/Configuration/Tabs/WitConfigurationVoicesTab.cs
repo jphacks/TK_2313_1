@@ -11,7 +11,7 @@ using Meta.WitAi;
 using Meta.WitAi.Data.Info;
 namespace Meta.WitAi.Data.Configuration.Tabs
 {
-    public class WitConfigurationVoicesTab: WitConfigurationEditorTab
+    public class WitConfigurationVoicesTab : WitConfigurationEditorTab
     {
         public override Type DataType => null;
         public override int TabOrder { get; } = 4;

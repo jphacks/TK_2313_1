@@ -95,7 +95,7 @@ namespace Oculus.Voice
         {
             SendMessage("OnStateChange", request, SendMessageOptions.DontRequireReceiver);
         }
-        
+
         private void HandleFullTranscription(string transcription)
         {
             SendMessage("OnFullTranscription", transcription, SendMessageOptions.DontRequireReceiver);

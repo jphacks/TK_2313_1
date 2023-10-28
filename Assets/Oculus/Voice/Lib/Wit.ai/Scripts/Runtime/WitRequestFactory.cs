@@ -90,7 +90,7 @@ namespace Meta.WitAi
             {
                 var keyword = existingKeywords[i].AsObject;
                 var key = keyword["keyword"].Value;
-                if(!map.ContainsKey(key))
+                if (!map.ContainsKey(key))
                 {
                     map[key] = keyword;
                 }

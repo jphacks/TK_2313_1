@@ -39,9 +39,9 @@ namespace Meta.WitAi
             public bool IsRunning { get; private set; }
 
             // Complete callback items
-            #if THREADING_ENABLED
+#if THREADING_ENABLED
             private Thread _thread;
-            #endif
+#endif
             private Func<T> _worker;
             private Action<T, string> _complete;
             private float _timeout;
@@ -66,10 +66,10 @@ namespace Meta.WitAi
                 _coroutine = CoroutineUtility.StartCoroutine(WaitForCompletion(), true);
 
                 // Start thread
-                #if THREADING_ENABLED
+#if THREADING_ENABLED
                 _thread = new Thread(Work);
                 _thread.Start();
-                #endif
+#endif
             }
 
             // Work
@@ -93,10 +93,10 @@ namespace Meta.WitAi
             // Wait for completion
             private IEnumerator WaitForCompletion()
             {
-                #if !THREADING_ENABLED
+#if !THREADING_ENABLED
                 yield return null;
                 Work();
-                #endif
+#endif
 
                 // Wait while running
                 DateTime start = DateTime.Now;
@@ -137,7 +137,7 @@ namespace Meta.WitAi
                     GameObject.DestroyImmediate(_coroutine);
                     _coroutine = null;
                 }
-                #if THREADING_ENABLED
+#if THREADING_ENABLED
                 if (_thread != null)
                 {
                     if (IsRunning)
@@ -146,7 +146,7 @@ namespace Meta.WitAi
                     }
                     _thread = null;
                 }
-                #endif
+#endif
                 if (IsRunning)
                 {
                     IsRunning = false;

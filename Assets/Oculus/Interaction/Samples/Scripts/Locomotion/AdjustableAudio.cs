@@ -41,7 +41,7 @@ namespace Oculus.Interaction.Locomotion
                 _audioClip = value;
             }
         }
-        [SerializeField, Range(0f,1f)]
+        [SerializeField, Range(0f, 1f)]
         private float _volumeFactor = 1f;
         public float VolumeFactor
         {

@@ -43,7 +43,8 @@ namespace Meta.XR.BuildingBlocks.Editor
 
         private static readonly IReadOnlyList<BlockData> EmptyBlockList = new List<BlockData>();
 
-        [Tooltip("Indicates whether only one instance of this block can be installed per scene.")] [SerializeField]
+        [Tooltip("Indicates whether only one instance of this block can be installed per scene.")]
+        [SerializeField]
         internal bool isSingleton;
 
         public bool IsSingleton => isSingleton;
@@ -86,10 +87,14 @@ namespace Meta.XR.BuildingBlocks.Editor
                 FixSetupRules();
 
                 EditorApplication.delayCall += () => { Selection.objects = installedObjects.Cast<Object>().ToArray(); };
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 installException = e;
                 throw;
-            } finally {
+            }
+            finally
+            {
                 OVRTelemetry.Start(OVRTelemetryConstants.BB.MarkerId.InstallBlockData)
                     .SetResult(installException == null ? OVRPlugin.Qpl.ResultType.Success : OVRPlugin.Qpl.ResultType.Fail)
                     .AddAnnotation(OVRTelemetryConstants.BB.AnnotationType.BlockId, Id)

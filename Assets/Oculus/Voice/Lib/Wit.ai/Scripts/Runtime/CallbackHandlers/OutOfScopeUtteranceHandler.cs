@@ -44,7 +44,7 @@ namespace Meta.WitAi.CallbackHandlers
             }
             return string.Empty;
         }
-        protected override void OnResponseInvalid(WitResponseNode response, string error) {}
+        protected override void OnResponseInvalid(WitResponseNode response, string error) { }
         protected override void OnResponseSuccess(WitResponseNode response)
         {
             onOutOfDomain?.Invoke(response.GetTranscription());

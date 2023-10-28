@@ -65,7 +65,7 @@ namespace Lib.Conduit.Editor
             }
 
             var assemblies = allAssemblies
-                .Where(a  => a.FullName == entity.Assembly).ToList();
+                .Where(a => a.FullName == entity.Assembly).ToList();
 
             // If we can't find the assembly, the type may not be in the manifest yet. Try an exhaustive search.
             if (assemblies.Count < 1)

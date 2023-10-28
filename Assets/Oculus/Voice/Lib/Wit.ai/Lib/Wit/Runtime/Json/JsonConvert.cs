@@ -38,7 +38,7 @@ namespace Meta.WitAi.Json
                 }
                 else if (objType.IsArray)
                 {
-                    return Activator.CreateInstance(objType, new object[] {0});
+                    return Activator.CreateInstance(objType, new object[] { 0 });
                 }
                 else
                 {
@@ -296,8 +296,8 @@ namespace Meta.WitAi.Json
             }
 
             // Attempt to parse (Enum.TryParse<TEnum>(enumString, false, out oldValue))
-            var parseMethod = _enumParseMethod.MakeGenericMethod(new[] {toType});
-            object[] parseParams = new object[] {enumString, false, Activator.CreateInstance(toType)};
+            var parseMethod = _enumParseMethod.MakeGenericMethod(new[] { toType });
+            object[] parseParams = new object[] { enumString, false, Activator.CreateInstance(toType) };
 
             // Invoke
             if ((bool)parseMethod.Invoke(null, parseParams))
@@ -337,7 +337,7 @@ namespace Meta.WitAi.Json
             for (int i = 0; i < jsonArray.Count; i++)
             {
                 object oldItem = EnsureExists(elementType, null);
-                ITEM_TYPE newItem = (ITEM_TYPE) DeserializeToken(elementType, oldItem, jsonArray[i], log, customConverters);
+                ITEM_TYPE newItem = (ITEM_TYPE)DeserializeToken(elementType, oldItem, jsonArray[i], log, customConverters);
                 newArray[i] = newItem;
             }
 
@@ -611,7 +611,7 @@ namespace Meta.WitAi.Json
             // Serialize a dictionary into a node
             else if (inType.GetInterfaces().Contains(typeof(IDictionary)))
             {
-                IDictionary oldDictionary = (IDictionary) inObject;
+                IDictionary oldDictionary = (IDictionary)inObject;
                 WitResponseClass newDictionary = new WitResponseClass();
                 Type valType = inType.GetGenericArguments()[1];
                 foreach (var key in oldDictionary.Keys)
@@ -637,7 +637,7 @@ namespace Meta.WitAi.Json
             {
                 // Get enum
                 WitResponseArray newArray = new WitResponseArray();
-                IEnumerator oldEnumerable = ((IEnumerable) inObject).GetEnumerator();
+                IEnumerator oldEnumerable = ((IEnumerable)inObject).GetEnumerator();
 
                 // Array[]
                 Type elementType = inType.GetElementType();

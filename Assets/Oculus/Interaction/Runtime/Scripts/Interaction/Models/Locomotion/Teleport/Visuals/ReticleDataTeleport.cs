@@ -64,7 +64,7 @@ namespace Oculus.Interaction.DistanceReticles
 
         public void Highlight(bool highlight)
         {
-            if(_materialBlock != null)
+            if (_materialBlock != null)
             {
                 _materialBlock.MaterialPropertyBlock.SetFloat(_highlightShaderID, highlight ? 1f : 0f);
                 _materialBlock.UpdateMaterialPropertyBlock();

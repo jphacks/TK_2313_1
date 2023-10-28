@@ -21,14 +21,14 @@ namespace Meta.WitAi
                 return;
             }
 
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             // Editor only destroy
             if (!Application.isPlaying)
             {
                 MonoBehaviour.DestroyImmediate(unityObject);
                 return;
             }
-            #endif
+#endif
 
             // Destroy object
             MonoBehaviour.Destroy(unityObject);

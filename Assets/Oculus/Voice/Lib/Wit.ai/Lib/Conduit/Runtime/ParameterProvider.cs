@@ -24,7 +24,7 @@ namespace Meta.Conduit
     {
         public const string WitResponseNodeReservedName = "@WitResponseNode";
         public const string VoiceSessionReservedName = "@VoiceSession";
-        
+
         /// <summary>
         /// Maps the parameters to their supplied values.
         /// The keys are normalized to lowercase.
@@ -36,7 +36,7 @@ namespace Meta.Conduit
         /// The keys are normalized to lowercase.
         /// </summary>
         private readonly Dictionary<string, string> _parameterToRoleMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-        
+
         /// <summary>
         /// Maps types to the list of parameters of that type. This is used as a cache to avoid repeated type lookups.
         /// </summary>
@@ -46,7 +46,7 @@ namespace Meta.Conduit
         /// Maps reserved parameter types to their reserved names.
         /// </summary>
         private readonly Dictionary<Type, string> _specializedParameters = new Dictionary<Type, string>();
-        
+
         /// <summary>
         /// Maps Wit.Ai type names to native types that support them starting with the preferred data type.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Meta.Conduit
         /// Custom types defined locally.
         /// </summary>
         private readonly Dictionary<string, Type> _customTypes = new Dictionary<string, Type>();
-        
+
         /// <summary>
         /// The list of the names of all parameters in the provider. 
         /// </summary>
@@ -84,7 +84,7 @@ namespace Meta.Conduit
         {
             _customTypes[name] = type;
         }
-        
+
         /// <summary>
         /// Explicitly adds, or replaces, a parameter.
         /// </summary>
@@ -94,7 +94,7 @@ namespace Meta.Conduit
         {
             ActualParameters[parameterName] = value;
         }
-        
+
         /// <summary>
         /// Extracts Conduit parameters from a Wit.Ai response.
         /// </summary>
@@ -124,10 +124,10 @@ namespace Meta.Conduit
                 parameters.Add(parameterName, new ConduitParameterValue(parameterValue, parameterTypes.First()));
             }
             parameters.Add(WitResponseNodeReservedName, new ConduitParameterValue(responseNode, typeof(WitResponseNode)));
-            
+
             PopulateParameters(parameters);
         }
-        
+
         /// <summary>
         /// Registers a certain keyword as reserved for a specialized parameter.
         /// </summary>
@@ -210,13 +210,13 @@ namespace Meta.Conduit
             {
                 return this.GetSpecializedParameter(formalParameter);
             }
-            
+
             var actualParameterName = GetActualParameterName(formalParameter, parameterMap, relaxed);
             if (string.IsNullOrEmpty(actualParameterName))
             {
                 return null;
             }
-            
+
             if (ActualParameters.TryGetValue(actualParameterName, out var parameterValue))
             {
                 if (formalParameter.ParameterType == typeof(string))
@@ -266,7 +266,7 @@ namespace Meta.Conduit
             {
                 return _parametersOfType[targetType];
             }
-            
+
             var parameters = new List<string>();
 
             foreach (var parameter in ActualParameters)
@@ -306,7 +306,7 @@ namespace Meta.Conduit
                     return ActualParameters[parameterName];
                 }
             }
-            
+
             // Log warning when not found
             var error = new StringBuilder();
             error.AppendLine("Specialized parameter not found");
@@ -321,7 +321,7 @@ namespace Meta.Conduit
             VLog.W(error.ToString());
             return null;
         }
-        
+
         /// <summary>
         /// Returns a list of all types that fit the parameter. 
         /// </summary>
@@ -355,7 +355,7 @@ namespace Meta.Conduit
                 {
                     return false;
                 }
-                
+
                 if (!targetType.IsPrimitive)
                 {
                     return true;
@@ -391,7 +391,7 @@ namespace Meta.Conduit
             {
                 targetActualParameterName = formalParameterName;
             }
-            
+
             if (ActualParameters.ContainsKey(targetActualParameterName))
             {
                 return targetActualParameterName;

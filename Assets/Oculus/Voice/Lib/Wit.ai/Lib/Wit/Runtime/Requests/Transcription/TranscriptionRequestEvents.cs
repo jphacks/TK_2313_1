@@ -22,7 +22,8 @@ namespace Meta.Voice
         /// Called every time audio input changes states
         /// </summary>
         public TUnityEvent OnAudioInputStateChange => _onAudioInputStateChange;
-        [Header("Audio Events")] [Tooltip("Called every time audio input changes states.")]
+        [Header("Audio Events")]
+        [Tooltip("Called every time audio input changes states.")]
         [SerializeField] private TUnityEvent _onAudioInputStateChange = Activator.CreateInstance<TUnityEvent>();
 
         /// <summary>
@@ -55,7 +56,8 @@ namespace Meta.Voice
         /// Called on request transcription while audio is still being analyzed
         /// </summary>
         public TranscriptionRequestEvent OnPartialTranscription => _onPartialTranscription;
-        [Header("Transcription Events")] [Tooltip("Called on request transcription while audio is still being analyzed.")]
+        [Header("Transcription Events")]
+        [Tooltip("Called on request transcription while audio is still being analyzed.")]
         [SerializeField] private TranscriptionRequestEvent _onPartialTranscription = Activator.CreateInstance<TranscriptionRequestEvent>();
         /// <summary>
         /// Called on request transcription when audio has been completely transferred

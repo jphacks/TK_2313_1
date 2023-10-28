@@ -129,13 +129,13 @@ namespace OculusSampleFramework
             DebugUIBuilder.instance.AddDivider();
             DebugUIBuilder.instance.AddLabel("OVROverlay vs. Application Render Comparison");
             DebugUIBuilder.instance
-                .AddRadio("OVROverlay", "group", delegate(Toggle t) { RadioPressed(ovrOverlayID, "group", t); })
+                .AddRadio("OVROverlay", "group", delegate (Toggle t) { RadioPressed(ovrOverlayID, "group", t); })
                 .GetComponentInChildren<Toggle>();
             applicationRadioButton = DebugUIBuilder.instance
-                .AddRadio("Application", "group", delegate(Toggle t) { RadioPressed(applicationID, "group", t); })
+                .AddRadio("Application", "group", delegate (Toggle t) { RadioPressed(applicationID, "group", t); })
                 .GetComponentInChildren<Toggle>();
             noneRadioButton = DebugUIBuilder.instance
-                .AddRadio("None", "group", delegate(Toggle t) { RadioPressed(noneID, "group", t); })
+                .AddRadio("None", "group", delegate (Toggle t) { RadioPressed(noneID, "group", t); })
                 .GetComponentInChildren<Toggle>();
 
             DebugUIBuilder.instance.Show();

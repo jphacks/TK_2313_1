@@ -198,7 +198,7 @@ namespace Meta.WitAi.TTS.Preload
             }
             if (Settings.data.voices == null)
             {
-                Settings.data.voices = new TTSPreloadVoiceData[] {new TTSPreloadVoiceData()};
+                Settings.data.voices = new TTSPreloadVoiceData[] { new TTSPreloadVoiceData() };
             }
 
             // Begin scroll
@@ -232,7 +232,7 @@ namespace Meta.WitAi.TTS.Preload
             {
                 voiceID = "No Voice Selected";
             }
-            voiceID = $"{(voiceIndex+1)} - {voiceID}";
+            voiceID = $"{(voiceIndex + 1)} - {voiceID}";
 
             // Foldout
             GUILayout.BeginHorizontal();
@@ -327,7 +327,7 @@ namespace Meta.WitAi.TTS.Preload
 
             // Get data
             TTSPreloadPhraseData phraseData = voiceData.phrases[phraseIndex];
-            string title = $"{(phraseIndex+1)} - {phraseData.textToSpeak}";
+            string title = $"{(phraseIndex + 1)} - {phraseData.textToSpeak}";
 
             // Foldout
             GUILayout.BeginHorizontal();

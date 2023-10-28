@@ -18,6 +18,6 @@ namespace Meta.WitAi.Events
     [Serializable]
     public class WitObjectEvent : UnityEvent<WitResponseClass>
     {
-        
+
     }
 }

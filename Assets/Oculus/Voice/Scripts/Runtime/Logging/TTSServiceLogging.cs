@@ -79,15 +79,15 @@ namespace Oculus.Voice.Logging
         // Init logger
         private void InitLogger()
         {
-            #if UNITY_ANDROID && !UNITY_EDITOR
+#if UNITY_ANDROID && !UNITY_EDITOR
             // PI Logger
             var loggerImpl = new VoiceSDKPlatformLoggerImpl();
             loggerImpl.Connect(VoiceSDKConstants.SdkVersion);
             _voiceSDKLoggerImpl = loggerImpl;
-            #else
+#else
             // Console Logger
             _voiceSDKLoggerImpl = new VoiceSDKConsoleLoggerImpl();
-            #endif
+#endif
 
             // Get configuration
             WitConfiguration witConfig = Service.GetComponent<IWitConfigurationProvider>()?.Configuration;

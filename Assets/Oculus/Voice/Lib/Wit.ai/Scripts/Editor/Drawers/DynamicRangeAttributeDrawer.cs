@@ -31,7 +31,7 @@ namespace Meta.WitAi.Drawers
             var parentProperty = property.serializedObject.FindProperty(parentPropertyName);
 
             var targetObject = property.serializedObject.targetObject;
-            if(targetObject != _targetObject)
+            if (targetObject != _targetObject)
             {
                 _targetObject = targetObject;
                 var targetObjectClassType = targetObject.GetType();
@@ -50,7 +50,7 @@ namespace Meta.WitAi.Drawers
             _max = attr.DefaultMax;
             if (null != _rangePropertyField)
             {
-                var range = (Vector2) _rangePropertyField.GetValue(_parentValue);
+                var range = (Vector2)_rangePropertyField.GetValue(_parentValue);
                 _min = range.x;
                 _max = range.y;
             }

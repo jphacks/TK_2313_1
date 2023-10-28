@@ -36,7 +36,8 @@ namespace Oculus.Voice.Bindings.Android
         public VoiceEvents VoiceEvents => _voiceService.VoiceEvents;
         public TelemetryEvents TelemetryEvents => _voiceService.TelemetryEvents;
 
-        public enum StoppedListeningReason : int {
+        public enum StoppedListeningReason : int
+        {
             NoReasonProvided = 0,
             Inactivity = 1,
             Timeout = 2,
@@ -89,7 +90,8 @@ namespace Oculus.Voice.Bindings.Android
 
             // Event callbacks
             VoiceEvents.OnStoppedListening?.Invoke();
-            switch((StoppedListeningReason)reason){
+            switch ((StoppedListeningReason)reason)
+            {
                 case StoppedListeningReason.NoReasonProvided:
                     break;
                 case StoppedListeningReason.Inactivity:

@@ -53,13 +53,13 @@ namespace Meta.WitAi.Configuration
         [SerializeField] public float soundWakeThreshold = .0005f;
 
         [Tooltip("The length of the individual samples read from the audio source")]
-        [Range(10, 500)] [SerializeField] public int sampleLengthInMs = 10;
+        [Range(10, 500)][SerializeField] public int sampleLengthInMs = 10;
 
         [Tooltip("The total audio data that should be buffered for lookback purposes on sound based activations.")]
         [SerializeField] public float micBufferLengthInSeconds = 1;
 
         [Tooltip("The maximum amount of concurrent requests that can occur")]
-        [Range(1, 10)] [SerializeField] public int maxConcurrentRequests = 5;
+        [Range(1, 10)][SerializeField] public int maxConcurrentRequests = 5;
 
         [Header("Custom Transcription")]
         [Tooltip(

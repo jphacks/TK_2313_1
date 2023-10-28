@@ -192,7 +192,7 @@ namespace Meta.Voice.Audio
         /// </summary>
         public static float GetLength(int totalSamples, int channels, int samplesPerSecond)
         {
-            return (float) totalSamples / (channels * samplesPerSecond);
+            return (float)totalSamples / (channels * samplesPerSecond);
         }
     }
 }

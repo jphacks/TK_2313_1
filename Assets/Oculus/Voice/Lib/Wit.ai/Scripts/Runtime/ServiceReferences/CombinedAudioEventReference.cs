@@ -30,11 +30,11 @@ namespace Meta.WitAi.ServiceReferences
 
         private void Awake()
         {
-            #if UNITY_2020_1_OR_NEWER
+#if UNITY_2020_1_OR_NEWER
             _sourceListeners = FindObjectsOfType<AudioEventListener>(true);
-            #else
+#else
             _sourceListeners = FindObjectsOfType<AudioEventListener>();
-            #endif
+#endif
         }
 
         private void OnEnable()

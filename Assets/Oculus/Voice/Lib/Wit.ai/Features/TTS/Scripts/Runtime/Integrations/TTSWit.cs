@@ -381,9 +381,9 @@ namespace Meta.WitAi.TTS.Integrations
         #region ITTSVoiceProvider
         // Preset voice settings
         [Header("Voice Settings")]
-        #if UNITY_2021_3_2 || UNITY_2021_3_3 || UNITY_2021_3_4 || UNITY_2021_3_5
+#if UNITY_2021_3_2 || UNITY_2021_3_3 || UNITY_2021_3_4 || UNITY_2021_3_5
         [NonReorderable]
-        #endif
+#endif
         [SerializeField] private TTSWitVoiceSettings[] _presetVoiceSettings;
         public TTSWitVoiceSettings[] PresetWitVoiceSettings => _presetVoiceSettings;
 
@@ -402,13 +402,13 @@ namespace Meta.WitAi.TTS.Integrations
         // Default voice setting uses the first voice in the list
         public TTSVoiceSettings VoiceDefaultSettings => PresetVoiceSettings == null || PresetVoiceSettings.Length == 0 ? null : PresetVoiceSettings[0];
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         // Apply settings
         public void SetVoiceSettings(TTSWitVoiceSettings[] newVoiceSettings)
         {
             _presetVoiceSettings = newVoiceSettings;
         }
-        #endif
+#endif
 
         // Convert voice settings into dictionary to be used with web requests
         private const string VOICE_KEY = "voice";
@@ -428,7 +428,7 @@ namespace Meta.WitAi.TTS.Integrations
                         RangeAttribute range = field.GetCustomAttribute<RangeAttribute>();
                         if (range != null && field.FieldType == typeof(int))
                         {
-                            int oldFloat = (int) fieldVal;
+                            int oldFloat = (int)fieldVal;
                             int newFloat = Mathf.Clamp(oldFloat, (int)range.min, (int)range.max);
                             if (oldFloat != newFloat)
                             {

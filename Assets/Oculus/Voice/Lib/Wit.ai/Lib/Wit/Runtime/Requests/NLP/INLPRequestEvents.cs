@@ -13,7 +13,7 @@ using UnityEngine.Events;
 namespace Meta.Voice
 {
     [Serializable]
-    public class NLPRequestResponseEvent : UnityEvent<WitResponseNode> {}
+    public class NLPRequestResponseEvent : UnityEvent<WitResponseNode> { }
 
     /// <summary>
     /// Interface for NLP request events callbacks

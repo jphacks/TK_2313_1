@@ -22,7 +22,7 @@ namespace Meta.Voice.Samples.TTSVoices
         [SerializeField] private Button _button;
 
         // Current disk cache location
-        private TTSDiskCacheLocation _cacheLocation = (TTSDiskCacheLocation) (-1);
+        private TTSDiskCacheLocation _cacheLocation = (TTSDiskCacheLocation)(-1);
 
         // Add listeners
         private void OnEnable()

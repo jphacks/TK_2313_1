@@ -389,7 +389,7 @@ namespace Meta.WitAi
             newRequest.AudioEncoding = AudioBuffer.Instance.AudioEncoding;
             newRequest.audioDurationTracker = new AudioDurationTracker(_recordingRequest.Options?.RequestId,
                 newRequest.AudioEncoding);
-            #pragma warning disable CS0618
+#pragma warning disable CS0618
             VoiceEvents.OnRequestCreated?.Invoke(_recordingRequest);
             VoiceEvents.OnSend?.Invoke(_recordingRequest);
             _timeLimitCoroutine = StartCoroutine(DeactivateDueToTimeLimit());
@@ -430,7 +430,7 @@ namespace Meta.WitAi
 
             // Call on create delegates
             VoiceEvents?.OnRequestInitialized?.Invoke(request);
-            #pragma warning disable CS0618
+#pragma warning disable CS0618
             VoiceEvents?.OnRequestCreated?.Invoke(null);
             VoiceEvents?.OnSend?.Invoke(request);
 
@@ -773,7 +773,7 @@ namespace Meta.WitAi
                 VoiceEvents?.OnRequestCompleted?.Invoke();
             }
             // Remove from transmit list, missing if aborted
-            if ( _transmitRequests.Contains(request))
+            if (_transmitRequests.Contains(request))
             {
                 _transmitRequests.Remove(request);
             }

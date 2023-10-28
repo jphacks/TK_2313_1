@@ -31,7 +31,7 @@ namespace Meta.Voice.Samples.Shapes
         [Tooltip("All the text requests to be called when 'Send' method is called")]
         [SerializeField] private string[] _requests;
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         // Reset
         private string[] _activates = new string[] { "Set the", "Make the" };
         private string[] _shapes = new string[] { "cube", "sphere", "capsule", "cylinder", "pentagon" };
@@ -52,7 +52,7 @@ namespace Meta.Voice.Samples.Shapes
                 }
             }
         }
-        #endif
+#endif
 
         public void SendParallelRequests()
         {

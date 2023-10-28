@@ -68,17 +68,17 @@ namespace Oculus.Interaction
                 {
                     return true;
                 }
-                if((_property & InteractorProperty.HasInteractable) != 0
+                if ((_property & InteractorProperty.HasInteractable) != 0
                     && Interactor.HasInteractable)
                 {
                     return true;
                 }
-                if((_property & InteractorProperty.IsSelecting) != 0
+                if ((_property & InteractorProperty.IsSelecting) != 0
                     && Interactor.State == InteractorState.Select)
                 {
                     return true;
                 }
-                if((_property & InteractorProperty.HasSelectedInteractable) != 0
+                if ((_property & InteractorProperty.HasSelectedInteractable) != 0
                     && Interactor.HasSelectedInteractable)
                 {
                     return true;

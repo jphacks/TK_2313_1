@@ -8,11 +8,11 @@
 
 using System.Runtime.CompilerServices;
 
-[assembly:InternalsVisibleTo("Meta.WitAi")]
-[assembly:InternalsVisibleTo("Meta.WitAi.Editor")]
-[assembly:InternalsVisibleTo("Meta.WitAi.Conduit")]
-[assembly:InternalsVisibleTo("Meta.WitAi.Conduit.Editor")]
-[assembly:InternalsVisibleTo("Meta.WitAi.Tests.Editor")]
-[assembly:InternalsVisibleTo("Meta.WitAi.Tests.Conduit")]
-[assembly:InternalsVisibleTo("Meta.WitAi.Tests")]
-[assembly:InternalsVisibleTo("DynamicProxyGenAssembly2")]
+[assembly: InternalsVisibleTo("Meta.WitAi")]
+[assembly: InternalsVisibleTo("Meta.WitAi.Editor")]
+[assembly: InternalsVisibleTo("Meta.WitAi.Conduit")]
+[assembly: InternalsVisibleTo("Meta.WitAi.Conduit.Editor")]
+[assembly: InternalsVisibleTo("Meta.WitAi.Tests.Editor")]
+[assembly: InternalsVisibleTo("Meta.WitAi.Tests.Conduit")]
+[assembly: InternalsVisibleTo("Meta.WitAi.Tests")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]

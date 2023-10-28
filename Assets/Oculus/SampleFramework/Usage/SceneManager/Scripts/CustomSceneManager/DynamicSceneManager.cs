@@ -84,7 +84,7 @@ public class DynamicSceneManager : MonoBehaviour
 
             var children = new List<OVRAnchor>();
             await container.FetchChildrenAsync(children);
-            snapshot.Anchors.Add(room, new SceneSnapshot.Data { Children = children});
+            snapshot.Anchors.Add(room, new SceneSnapshot.Data { Children = children });
 
             foreach (var child in children)
             {

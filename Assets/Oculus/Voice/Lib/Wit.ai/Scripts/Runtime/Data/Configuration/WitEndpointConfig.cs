@@ -19,14 +19,16 @@ namespace Meta.WitAi.Configuration
         /// <summary>
         /// Customized uri scheme (Ex. https)
         /// </summary>
-        [SerializeField] [FormerlySerializedAs("uriScheme")]
+        [SerializeField]
+        [FormerlySerializedAs("uriScheme")]
         private string _uriScheme;
         public string UriScheme => string.IsNullOrEmpty(_uriScheme) ? WitConstants.URI_SCHEME : _uriScheme;
 
         /// <summary>
         /// Customized host location (Ex. api.wit.ai)
         /// </summary>
-        [SerializeField] [FormerlySerializedAs("authority")]
+        [SerializeField]
+        [FormerlySerializedAs("authority")]
         private string _authority;
         public string Authority =>
             string.IsNullOrEmpty(_authority) ? WitConstants.URI_AUTHORITY : _authority;
@@ -34,14 +36,16 @@ namespace Meta.WitAi.Configuration
         /// <summary>
         /// Customized host port (Ex. api.wit.ai)
         /// </summary>
-        [SerializeField] [FormerlySerializedAs("port")]
+        [SerializeField]
+        [FormerlySerializedAs("port")]
         private int _port;
         public int Port => _port <= 0 ? WitConstants.URI_DEFAULT_PORT : _port;
 
         /// <summary>
         /// API version to be used for this endpoint. Defaults to sdk default version
         /// </summary>
-        [SerializeField] [FormerlySerializedAs("witApiVersion")]
+        [SerializeField]
+        [FormerlySerializedAs("witApiVersion")]
         private string _witApiVersion;
         public string WitApiVersion => string.IsNullOrEmpty(_witApiVersion)
             ? WitConstants.API_VERSION
@@ -50,7 +54,8 @@ namespace Meta.WitAi.Configuration
         /// <summary>
         /// Endpoint used for text based voice command.  Defaults to 'message'
         /// </summary>
-        [SerializeField] [FormerlySerializedAs("message")]
+        [SerializeField]
+        [FormerlySerializedAs("message")]
         private string _message;
         public string Message =>
             string.IsNullOrEmpty(_message) ? WitConstants.ENDPOINT_MESSAGE : _message;
@@ -58,7 +63,8 @@ namespace Meta.WitAi.Configuration
         /// <summary>
         /// Endpoint used for audio based voice command.  Defaults to 'speech'
         /// </summary>
-        [SerializeField] [FormerlySerializedAs("speech")]
+        [SerializeField]
+        [FormerlySerializedAs("speech")]
         private string _speech;
         public string Speech =>
             string.IsNullOrEmpty(_speech) ? WitConstants.ENDPOINT_SPEECH : _speech;
@@ -66,7 +72,8 @@ namespace Meta.WitAi.Configuration
         /// <summary>
         /// Endpoint used for audio based transcription.  Defaults to 'dictation'
         /// </summary>
-        [SerializeField] [FormerlySerializedAs("dictation")]
+        [SerializeField]
+        [FormerlySerializedAs("dictation")]
         private string _dictation;
         public string Dictation => string.IsNullOrEmpty(_dictation) ? WitConstants.ENDPOINT_DICTATION : _dictation;
 

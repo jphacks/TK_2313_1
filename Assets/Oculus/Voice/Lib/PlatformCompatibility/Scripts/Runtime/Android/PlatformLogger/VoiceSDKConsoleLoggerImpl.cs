@@ -71,7 +71,7 @@ namespace Oculus.Voice.Core.Bindings.Android.PlatformLogger
             if (!ShouldLogToConsole) return;
             Debug.Log($"{TAG}: Logging key-value pair: {annotationKey}::{annotationValue}");
         }
-        
+
         public void LogFirstTranscriptionTime()
         {
             if (!loggedFirstTranscriptionTime)
@@ -79,6 +79,6 @@ namespace Oculus.Voice.Core.Bindings.Android.PlatformLogger
                 loggedFirstTranscriptionTime = true;
                 LogInteractionPoint("firstPartialTranscriptionTime");
             }
-        } 
+        }
     }
 }

@@ -13,7 +13,8 @@ namespace Meta.WitAi.Dictation
         [SerializeField] private string activationSeparator = String.Empty;
 
         [Header("Events")]
-        [SerializeField] private WitTranscriptionEvent onTranscriptionUpdated = new
+        [SerializeField]
+        private WitTranscriptionEvent onTranscriptionUpdated = new
             WitTranscriptionEvent();
 
         private StringBuilder _text;

@@ -1051,7 +1051,7 @@ public class OVRPluginUpdater : IOVRPluginInfoSupplier
         }
     }
 
-#region IOVRPluginInfoSupplier Implementation
+    #region IOVRPluginInfoSupplier Implementation
 
     // Test if the OVRPlugin/OpenXR plugin is currently activated, used by other editor utilities
     public bool IsOVRPluginOpenXRActivated() => IsOVRPluginOpenXRActivatedInternal();
@@ -1073,7 +1073,7 @@ public class OVRPluginUpdater : IOVRPluginInfoSupplier
         return enabledUtilsPluginPkg != null && enabledUtilsPluginPkg.IsBundledPluginPackage();
     }
 
-#endregion
+    #endregion
 }
 
 #endif

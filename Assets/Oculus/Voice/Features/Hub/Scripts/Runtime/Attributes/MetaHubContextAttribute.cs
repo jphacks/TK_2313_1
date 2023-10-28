@@ -16,7 +16,7 @@ namespace Meta.Voice.Hub.Attributes
         public string Context { get; private set; }
         public int Priority { get; private set; }
         public string LogoPath { get; private set; }
-        
+
         public MetaHubContextAttribute(string context, int priority = 1000, string pathToLogo = "")
         {
             Context = context;

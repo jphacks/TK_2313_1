@@ -23,51 +23,51 @@ namespace Meta.WitAi.Windows
     /// <summary>
     /// Manages the Conduit manifest generation.
     /// </summary>
-    public class ConduitManifestGenerationManager: IPreprocessBuildWithReport
+    public class ConduitManifestGenerationManager : IPreprocessBuildWithReport
     {
         /// <summary>
         /// The priority for preprocess build callback.
         /// </summary>
         public int callbackOrder => 0;
-        
+
         /// <summary>
         /// The assembly miner.
         /// </summary>
         private static readonly AssemblyMiner AssemblyMiner = new AssemblyMiner(new WitParameterValidator());
-        
+
         /// <summary>
         /// Maps individual configurations to their associated managers. This is needed to allow static resolution
         /// on global events like building or running.
         /// </summary>
         private static readonly Dictionary<string, ConduitManifestGenerationManager> ConfigurationToManagerMap =
             new Dictionary<string, ConduitManifestGenerationManager>();
-        
+
         /// <summary>
         /// Locally collected Conduit statistics.
         /// </summary>
         private static ConduitStatistics _statistics;
-        
+
         /// <summary>
         /// Set to true if code had changed since last manifest generation.
         /// We start with this set to true to handle changes when the editor is not running.
         /// </summary>
         private static bool _codeChanged = true;
-        
+
         /// <summary>
         /// The manifest generator used for this configuration.
         /// </summary>
         private readonly ManifestGenerator _manifestGenerator;
-        
+
         /// <summary>
         /// True when a manifest exists locally for this configuration.
         /// </summary>
-        public bool ManifestAvailable { get; private set; }= false;
+        public bool ManifestAvailable { get; private set; } = false;
 
         /// <summary>
         /// The assembly walker associated with this configuration.
         /// </summary>
         internal AssemblyWalker AssemblyWalker { get; private set; } = new AssemblyWalker();
-        
+
         /// <summary>
         /// Locally collected Conduit statistics.
         /// </summary>
@@ -96,9 +96,9 @@ namespace Meta.WitAi.Windows
             {
                 ConfigurationToManagerMap[configurationKey] = new ConduitManifestGenerationManager(configuration);
             }
-            
+
             ConfigurationToManagerMap[configurationKey].GenerateManifestIfNeeded(configuration);
-            
+
             return ConfigurationToManagerMap[configurationKey];
         }
 
@@ -119,7 +119,7 @@ namespace Meta.WitAi.Windows
             _manifestGenerator = new ManifestGenerator(AssemblyWalker, AssemblyMiner);
             ConfigurationToManagerMap[configuration.name] = this;
         }
-        
+
         public void OnPreprocessBuild(BuildReport report)
         {
             if (_codeChanged)
@@ -131,7 +131,7 @@ namespace Meta.WitAi.Windows
                 GenerateMissingManifests();
             }
         }
-        
+
         [UnityEditor.Callbacks.DidReloadScripts]
         private static void OnScriptsReloaded()
         {
@@ -167,12 +167,12 @@ namespace Meta.WitAi.Windows
                 {
                     continue;
                 }
-                
+
                 var manager = GetInstance(configuration);
                 manager.GenerateManifest(configuration, false);
             }
         }
-        
+
         private static void GenerateAllManifests()
         {
             foreach (var configuration in WitConfigurationUtility.GetLoadedConfigurations())
@@ -202,7 +202,7 @@ namespace Meta.WitAi.Windows
         {
             return _manifestGenerator.GenerateEmptyManifest(domain, id);
         }
-        
+
         private void GenerateManifestIfNeeded(WitConfiguration configuration)
         {
             if (!configuration.useConduit || configuration == null)
@@ -231,7 +231,7 @@ namespace Meta.WitAi.Windows
             return directory + "/" + configuration.ManifestLocalPath;
         }
 
-        
+
         /// <summary>
         /// Generates a manifest and optionally opens it in the editor.
         /// </summary>
@@ -294,11 +294,11 @@ namespace Meta.WitAi.Windows
 
             var configName = configuration.name;
             var manifestName = Path.GetFileNameWithoutExtension(unityPath);
-            #if UNITY_2021_2_OR_NEWER
+#if UNITY_2021_2_OR_NEWER
             var configPath = AssetDatabase.GetAssetPath(configuration);
             configName = $"<a href=\"{configPath}\">{configName}</a>";
             manifestName = $"<a href=\"{unityPath}\">{manifestName}</a>";
-            #endif
+#endif
             VLog.D($"Conduit manifest generated\nConfiguration: {configName}\nManifest: {manifestName}\nGeneration Time: {generationTime.TotalMilliseconds} ms");
 
             if (openManifest)

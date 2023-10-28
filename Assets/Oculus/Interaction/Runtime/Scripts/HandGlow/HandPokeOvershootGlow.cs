@@ -115,7 +115,7 @@ namespace Oculus.Interaction
             }
         }
 
-        private void UpdateOvershoot(float normalizedDistance )
+        private void UpdateOvershoot(float normalizedDistance)
         {
             if (_materialEditor == null) return;
             var _block = _materialEditor.MaterialPropertyBlock;

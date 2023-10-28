@@ -32,7 +32,7 @@ namespace Meta.WitAi.Data
             var endOffset = bufferDataLength - bufferDataIndex;
             var index = bufferIndex - endOffset;
             if (index < 0) index = buffer.Length + index;
-            return (int) index;
+            return (int)index;
         }
 
         public T this[long bufferDataIndex] => buffer[GetBufferArrayIndex(bufferDataIndex)];
@@ -99,7 +99,7 @@ namespace Meta.WitAi.Data
                 }
 
                 index = ringBuffer.GetBufferArrayIndex(bufferDataIndex);
-                var length = (int) (ringBuffer.bufferDataLength - bufferDataIndex);
+                var length = (int)(ringBuffer.bufferDataLength - bufferDataIndex);
                 if (IsValid && length > 0)
                 {
                     for (int i = 0; i < writers.Length; i++)
@@ -171,13 +171,13 @@ namespace Meta.WitAi.Data
             {
                 if (bufferIndex + length < buffer.Length)
                 {
-                    writer(buffer, (int) bufferIndex, length);
+                    writer(buffer, (int)bufferIndex, length);
                 }
                 else
                 {
                     if (length > bufferDataLength)
                     {
-                        length = (int) (bufferDataLength - bufferIndex);
+                        length = (int)(bufferDataLength - bufferIndex);
                     }
 
                     if (length > buffer.Length)
@@ -186,10 +186,10 @@ namespace Meta.WitAi.Data
                     }
 
                     var l = Math.Min(buffer.Length, length);
-                    int endChunkLength = (int) (buffer.Length - bufferIndex);
+                    int endChunkLength = (int)(buffer.Length - bufferIndex);
                     int wrappedChunkLength = l - endChunkLength;
 
-                    writer(buffer, (int) bufferIndex, endChunkLength);
+                    writer(buffer, (int)bufferIndex, endChunkLength);
                     writer(buffer, 0, wrappedChunkLength);
                 }
             }
@@ -199,7 +199,7 @@ namespace Meta.WitAi.Data
         {
             if (length > buffer.Length)
                 throw new ArgumentException(
-                    $"Push data exceeds buffer size {length} < {buffer.Length}" );
+                    $"Push data exceeds buffer size {length} < {buffer.Length}");
 
             if (bufferIndex + length < buffer.Length)
             {
@@ -250,10 +250,10 @@ namespace Meta.WitAi.Data
 
             lock (buffer)
             {
-                int read = (int) (Math.Min(bufferDataIndex + length, bufferDataLength) -
+                int read = (int)(Math.Min(bufferDataIndex + length, bufferDataLength) -
                                   bufferDataIndex);
 
-                int bufferIndex = this.bufferIndex - (int) (bufferDataLength - bufferDataIndex);
+                int bufferIndex = this.bufferIndex - (int)(bufferDataLength - bufferDataIndex);
                 if (bufferIndex < 0)
                 {
                     bufferIndex = buffer.Length + bufferIndex;

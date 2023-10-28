@@ -1488,7 +1488,7 @@ public class OVRManager : MonoBehaviour, OVRMixedRealityCaptureConfiguration
                 return MetaXRFoveationFeature.foveatedRenderingLevel;
             else
 #endif
-                return (FoveatedRenderingLevel)OVRPlugin.foveatedRenderingLevel;
+            return (FoveatedRenderingLevel)OVRPlugin.foveatedRenderingLevel;
         }
         set
         {
@@ -1497,7 +1497,7 @@ public class OVRManager : MonoBehaviour, OVRMixedRealityCaptureConfiguration
                 MetaXRFoveationFeature.foveatedRenderingLevel = value;
             else
 #endif
-                OVRPlugin.foveatedRenderingLevel = (OVRPlugin.FoveatedRenderingLevel)value;
+            OVRPlugin.foveatedRenderingLevel = (OVRPlugin.FoveatedRenderingLevel)value;
         }
     }
 
@@ -1522,7 +1522,7 @@ public class OVRManager : MonoBehaviour, OVRMixedRealityCaptureConfiguration
                 return MetaXRFoveationFeature.useDynamicFoveatedRendering;
             else
 #endif
-                return OVRPlugin.useDynamicFoveatedRendering;
+            return OVRPlugin.useDynamicFoveatedRendering;
         }
         set
         {
@@ -1531,7 +1531,7 @@ public class OVRManager : MonoBehaviour, OVRMixedRealityCaptureConfiguration
                 MetaXRFoveationFeature.useDynamicFoveatedRendering = value;
             else
 #endif
-                OVRPlugin.useDynamicFoveatedRendering = value;
+            OVRPlugin.useDynamicFoveatedRendering = value;
 
         }
     }
@@ -2738,35 +2738,35 @@ public class OVRManager : MonoBehaviour, OVRMixedRealityCaptureConfiguration
 
                     break;
                 case OVRPlugin.EventType.SpatialAnchorCreateComplete:
-                {
-                    var data =
-                        OVRDeserialize.ByteArrayToStructure<OVRDeserialize.SpatialAnchorCreateCompleteData>(
-                            eventDataBuffer.EventData);
-
-                    OVRTask.SetResult(data.RequestId,
-                        data.Result >= 0 ? new OVRAnchor(data.Space, data.Uuid) : OVRAnchor.Null);
-                    SpatialAnchorCreateComplete?.Invoke(data.RequestId, data.Result >= 0, data.Space, data.Uuid);
-                }
-                break;
-                case OVRPlugin.EventType.SpaceSetComponentStatusComplete:
-                {
-                    var data = OVRDeserialize
-                        .ByteArrayToStructure<OVRDeserialize.SpaceSetComponentStatusCompleteData>(eventDataBuffer
-                            .EventData);
-                    SpaceSetComponentStatusComplete?.Invoke(data.RequestId, data.Result >= 0, data.Space, data.Uuid,
-                        data.ComponentType, data.Enabled != 0);
-
-                    if (data.ComponentType == OVRPlugin.SpaceComponentType.Locatable)
                     {
-                        OVRTelemetry.Client.MarkerEnd(
-                            OVRTelemetryConstants.Scene.MarkerId.SpatialAnchorSetComponentStatus,
-                            data.Result >= 0 ? OVRPlugin.Qpl.ResultType.Success : OVRPlugin.Qpl.ResultType.Fail,
-                            data.RequestId.GetHashCode());
-                    }
+                        var data =
+                            OVRDeserialize.ByteArrayToStructure<OVRDeserialize.SpatialAnchorCreateCompleteData>(
+                                eventDataBuffer.EventData);
 
-                    OVRTask.GetExisting<bool>(data.RequestId).SetResult(data.Result >= 0);
-                }
-                break;
+                        OVRTask.SetResult(data.RequestId,
+                            data.Result >= 0 ? new OVRAnchor(data.Space, data.Uuid) : OVRAnchor.Null);
+                        SpatialAnchorCreateComplete?.Invoke(data.RequestId, data.Result >= 0, data.Space, data.Uuid);
+                    }
+                    break;
+                case OVRPlugin.EventType.SpaceSetComponentStatusComplete:
+                    {
+                        var data = OVRDeserialize
+                            .ByteArrayToStructure<OVRDeserialize.SpaceSetComponentStatusCompleteData>(eventDataBuffer
+                                .EventData);
+                        SpaceSetComponentStatusComplete?.Invoke(data.RequestId, data.Result >= 0, data.Space, data.Uuid,
+                            data.ComponentType, data.Enabled != 0);
+
+                        if (data.ComponentType == OVRPlugin.SpaceComponentType.Locatable)
+                        {
+                            OVRTelemetry.Client.MarkerEnd(
+                                OVRTelemetryConstants.Scene.MarkerId.SpatialAnchorSetComponentStatus,
+                                data.Result >= 0 ? OVRPlugin.Qpl.ResultType.Success : OVRPlugin.Qpl.ResultType.Fail,
+                                data.RequestId.GetHashCode());
+                        }
+
+                        OVRTask.GetExisting<bool>(data.RequestId).SetResult(data.Result >= 0);
+                    }
+                    break;
                 case OVRPlugin.EventType.SpaceQueryResults:
                     if (SpaceQueryResults != null)
                     {
@@ -2778,13 +2778,13 @@ public class OVRManager : MonoBehaviour, OVRMixedRealityCaptureConfiguration
 
                     break;
                 case OVRPlugin.EventType.SpaceQueryComplete:
-                {
-                    var data = OVRDeserialize.ByteArrayToStructure<OVRDeserialize.SpaceQueryCompleteData>(
-                        eventDataBuffer.EventData);
-                    SpaceQueryComplete?.Invoke(data.RequestId, data.Result >= 0);
-                    OVRAnchor.OnSpaceQueryCompleteData(data);
-                }
-                break;
+                    {
+                        var data = OVRDeserialize.ByteArrayToStructure<OVRDeserialize.SpaceQueryCompleteData>(
+                            eventDataBuffer.EventData);
+                        SpaceQueryComplete?.Invoke(data.RequestId, data.Result >= 0);
+                        OVRAnchor.OnSpaceQueryCompleteData(data);
+                    }
+                    break;
                 case OVRPlugin.EventType.SpaceSaveComplete:
                     if (SpaceSaveComplete != null)
                     {
@@ -3393,7 +3393,7 @@ public class OVRManager : MonoBehaviour, OVRMixedRealityCaptureConfiguration
 #endif
     }
 
-#region Utils
+    #region Utils
 
     private class Observable<T>
     {
@@ -3431,5 +3431,5 @@ public class OVRManager : MonoBehaviour, OVRMixedRealityCaptureConfiguration
         }
     }
 
-#endregion
+    #endregion
 }

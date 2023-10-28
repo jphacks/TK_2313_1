@@ -49,10 +49,10 @@ namespace Meta.Conduit
         /// </summary>
         public Dictionary<string, string> ParameterMap { get; set; } = new Dictionary<string, string>();
 
-        
+
         /// <summary>
         /// Saving the attribute type for the current context.
         /// </summary>
-        public Type CustomAttributeType { get; set; } 
+        public Type CustomAttributeType { get; set; }
     }
 }

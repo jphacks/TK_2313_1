@@ -9,55 +9,55 @@ namespace uLipSync
 
 #if USE_VRM10
 
-[CustomEditor(typeof(uLipSyncExpressionVRM))]
-public class uLipSyncExpressionVRMEditor : uLipSyncBlendShapeEditor
-{
-    uLipSyncExpressionVRM expression => target as uLipSyncExpressionVRM;
-    Vrm10Instance vrm10Instance;
-
-    void OnEnable()
+    [CustomEditor(typeof(uLipSyncExpressionVRM))]
+    public class uLipSyncExpressionVRMEditor : uLipSyncBlendShapeEditor
     {
-        vrm10Instance = expression.GetComponent<Vrm10Instance>();
-    }
+        uLipSyncExpressionVRM expression => target as uLipSyncExpressionVRM;
+        Vrm10Instance vrm10Instance;
 
-    public override void OnInspectorGUI()
-    {
-        serializedObject.Update();
-
-        if (EditorUtil.Foldout("LipSync Update Method", true))
+        void OnEnable()
         {
-            ++EditorGUI.indentLevel;
-            EditorUtil.DrawProperty(serializedObject, nameof(expression.updateMethod));
-            --EditorGUI.indentLevel;
-            EditorGUILayout.Separator();
+            vrm10Instance = expression.GetComponent<Vrm10Instance>();
         }
 
-        if (EditorUtil.Foldout("Parameters", true))
+        public override void OnInspectorGUI()
         {
-            ++EditorGUI.indentLevel;
-            DrawParameters();
-            --EditorGUI.indentLevel;
-            EditorGUILayout.Separator();
+            serializedObject.Update();
+
+            if (EditorUtil.Foldout("LipSync Update Method", true))
+            {
+                ++EditorGUI.indentLevel;
+                EditorUtil.DrawProperty(serializedObject, nameof(expression.updateMethod));
+                --EditorGUI.indentLevel;
+                EditorGUILayout.Separator();
+            }
+
+            if (EditorUtil.Foldout("Parameters", true))
+            {
+                ++EditorGUI.indentLevel;
+                DrawParameters();
+                --EditorGUI.indentLevel;
+                EditorGUILayout.Separator();
+            }
+
+            if (EditorUtil.Foldout("Blend Shapes", true))
+            {
+                ++EditorGUI.indentLevel;
+                DrawBlendShapeReorderableList();
+                --EditorGUI.indentLevel;
+                EditorGUILayout.Separator();
+            }
+
+            serializedObject.ApplyModifiedProperties();
         }
 
-        if (EditorUtil.Foldout("Blend Shapes", true))
+        protected override string[] GetBlendShapeArray()
         {
-            ++EditorGUI.indentLevel;
-            DrawBlendShapeReorderableList();
-            --EditorGUI.indentLevel;
-            EditorGUILayout.Separator();
+            if (!vrm10Instance || !vrm10Instance.Vrm) return new string[] { "" };
+
+            return vrm10Instance.Vrm.Expression.Clips.Select(x => x.Clip.name).ToArray();
         }
-
-        serializedObject.ApplyModifiedProperties();
     }
-
-    protected override string[] GetBlendShapeArray()
-    {
-        if (!vrm10Instance || !vrm10Instance.Vrm) return new string[] { "" };
-
-        return vrm10Instance.Vrm.Expression.Clips.Select(x => x.Clip.name).ToArray();
-    }
-}
 
 #else
 

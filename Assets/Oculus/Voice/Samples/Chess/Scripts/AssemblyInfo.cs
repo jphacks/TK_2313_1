@@ -20,4 +20,4 @@
 
 using Meta.Conduit;
 
-[assembly:ConduitAssembly]
+[assembly: ConduitAssembly]

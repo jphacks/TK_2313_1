@@ -30,10 +30,10 @@ namespace Meta.Voice.Hub
         public virtual string Context => _context;
         public virtual int Priority => _priority;
         public virtual string Prefix => _context;
-        
+
         public virtual void OnGUI()
         {
-            
+
         }
     }
 }

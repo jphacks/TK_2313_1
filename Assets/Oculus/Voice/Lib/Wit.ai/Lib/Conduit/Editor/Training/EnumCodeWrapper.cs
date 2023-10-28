@@ -24,7 +24,7 @@ namespace Meta.Conduit.Editor
     internal class EnumCodeWrapper
     {
         public const string DEFAULT_PATH = @"Assets\";
-        
+
         private readonly string _sourceFilePath;
         private readonly IFileIo _fileIo;
         private readonly CodeCompileUnit _compileUnit;
@@ -51,7 +51,7 @@ namespace Meta.Conduit.Editor
                 var aliases = GetAliases(enumType, enumValueName);
                 enumValues.Add(new WitKeyword(aliases[0], aliases.GetRange(1, aliases.Count - 1)));
             }
-            
+
             AddValues(enumValues);
         }
 
@@ -66,9 +66,9 @@ namespace Meta.Conduit.Editor
             {
                 throw new ArgumentException(nameof(entityName));
             }
-            
+
             _conduitAttributeName = GetShortAttributeName(nameof(ConduitValueAttribute));
-            
+
             // Initial setup
             _compileUnit = new CodeCompileUnit();
             _sourceFilePath = string.IsNullOrEmpty(sourceCodeFile) ? GetEnumFilePath(enumName, enumNamespace) : sourceCodeFile;
@@ -107,7 +107,7 @@ namespace Meta.Conduit.Editor
             // Add all enum values
             AddValues(enumValues);
         }
-        
+
         /// <summary>
         /// Adds the supplied values to the enum construct. Values that already exist are ignored.
         /// </summary>
@@ -124,7 +124,7 @@ namespace Meta.Conduit.Editor
                 AddValue(value);
             }
         }
-        
+
         public void AddValue(WitKeyword keyword)
         {
             var pendingSynonyms = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
@@ -136,14 +136,14 @@ namespace Meta.Conduit.Editor
                 foreach (var synonym in keyword.synonyms)
                 {
                     if (!pendingSynonyms.Contains(synonym))
-                        //if (synonym.ToLower() != keyword.keyword.ToLower())
+                    //if (synonym.ToLower() != keyword.keyword.ToLower())
                     {
                         pendingSynonyms.Add(synonym);
                         arguments.Add(new CodeAttributeArgument(new CodePrimitiveExpression(synonym)));
                     }
                 }
             }
-            
+
             CodeAttributeDeclaration codeAttribute = null;
             if (arguments.Count > 0)
             {
@@ -151,7 +151,7 @@ namespace Meta.Conduit.Editor
                     new CodeTypeReference(_conduitAttributeName);
                 codeAttribute = new CodeAttributeDeclaration(entityKeywordAttributeType, arguments.ToArray());
             }
-            
+
             AddValue(keyword.keyword, codeAttribute);
         }
 
@@ -170,8 +170,8 @@ namespace Meta.Conduit.Editor
                 return new List<string>() { enumValueName };
             }
 
-            var allAliases = new List<string>() { enumValueName }; 
-            
+            var allAliases = new List<string>() { enumValueName };
+
             var attribute = enumValueMemberInfo.GetCustomAttributes(typeof(ConduitValueAttribute), false).FirstOrDefault() as ConduitValueAttribute;
             if (attribute == null)
             {
@@ -182,7 +182,7 @@ namespace Meta.Conduit.Editor
 
             return allAliases;
         }
-        
+
         private void ImportConduitNamespaceIfNeeded()
         {
             foreach (var customAttribute in _typeDeclaration.CustomAttributes)
@@ -217,7 +217,7 @@ namespace Meta.Conduit.Editor
 
             return attributeName;
         }
-        
+
         // Get safe enum file path
         private string GetEnumFilePath(string enumName, string enumNamespace)
         {
@@ -233,13 +233,13 @@ namespace Meta.Conduit.Editor
             }
             var attributeNamespaceName = forType.Namespace;
             var importNameSpace = new CodeNamespaceImport(attributeNamespaceName);
-            
+
             if (_namespace == null)
             {
                 VLog.E("Namespace was null");
                 return;
             }
-            
+
             _namespace.Imports.Add(importNameSpace);
         }
 
@@ -267,12 +267,12 @@ namespace Meta.Conduit.Editor
             {
                 field.CustomAttributes.Add(attribute);
             }
-            
+
             // Replace attribute if value already exists
             if (_enumValues.Contains(cleanValue))
             {
                 int enumIndex = _enumValues.IndexOf(cleanValue);
-                
+
                 _typeDeclaration.Members[enumIndex] = field;
                 return;
             }
@@ -326,7 +326,7 @@ namespace Meta.Conduit.Editor
         public string ToSourceCode()
         {
             ImportConduitNamespaceIfNeeded();
-            
+
             // Create a TextWriter to a StreamWriter to the output file.
             var sb = new StringBuilder();
             using (var sw = new StringWriter(sb))

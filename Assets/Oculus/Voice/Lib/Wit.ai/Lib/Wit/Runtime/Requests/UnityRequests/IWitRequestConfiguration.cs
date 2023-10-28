@@ -67,7 +67,7 @@ namespace Meta.WitAi
     {
         private string _clientToken;
         private string _serverToken;
-        private WitConfigurationAssetData[] _configurationData =  Array.Empty<WitConfigurationAssetData>();
+        private WitConfigurationAssetData[] _configurationData = Array.Empty<WitConfigurationAssetData>();
 
         public WitServerRequestConfiguration(string serverToken)
         {

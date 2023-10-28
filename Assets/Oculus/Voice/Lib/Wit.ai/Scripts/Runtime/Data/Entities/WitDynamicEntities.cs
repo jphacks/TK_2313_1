@@ -83,7 +83,7 @@ namespace Meta.WitAi.Data.Entities
         public void Add(WitDynamicEntity dynamicEntity)
         {
             int index = entities.FindIndex(e => e.entity == dynamicEntity.entity);
-            if(index < 0) entities.Add(dynamicEntity);
+            if (index < 0) entities.Add(dynamicEntity);
             else VLog.W($"Cannot add entity, registry already has an entry for {dynamicEntity.entity}");
         }
 
@@ -109,7 +109,7 @@ namespace Meta.WitAi.Data.Entities
             if (index >= 0)
             {
                 entities[index].keywords.Remove(keyword);
-                if(entities[index].keywords.Count == 0) entities.RemoveAt(index);
+                if (entities[index].keywords.Count == 0) entities.RemoveAt(index);
             }
         }
     }

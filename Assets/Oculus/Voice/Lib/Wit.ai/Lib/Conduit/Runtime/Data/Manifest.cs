@@ -114,7 +114,7 @@ namespace Meta.Conduit
             if (targetType == null)
             {
                 VLog.E($"Failed to resolve type: {qualifiedTypeName}");
-                return  null;
+                return null;
             }
 
             var types = new Type[action.Parameters.Count];
@@ -133,10 +133,10 @@ namespace Meta.Conduit
             if (targetMethod == null)
             {
                 VLog.E($"Failed to resolve method {typeName}.{method}.");
-                return  null;
+                return null;
             }
 
-            return Tuple.Create( targetMethod, targetType);
+            return Tuple.Create(targetMethod, targetType);
         }
 
 

@@ -20,7 +20,8 @@
 
 using UnityEngine;
 
-namespace Oculus.Interaction.Input {
+namespace Oculus.Interaction.Input
+{
     public class ControllerButtonUsageActiveState : MonoBehaviour, IActiveState
     {
         [SerializeField, Interface(typeof(IController))]

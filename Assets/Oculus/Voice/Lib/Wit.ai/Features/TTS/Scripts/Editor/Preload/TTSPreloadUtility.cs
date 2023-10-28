@@ -198,7 +198,7 @@ namespace Meta.WitAi.TTS.Preload
                 for (int p = 0; p < voiceData.phrases.Length; p++)
                 {
                     // Iterate progress
-                    float progress = (float) phraseCount / (float) phraseTotal;
+                    float progress = (float)phraseCount / (float)phraseTotal;
                     onProgress?.Invoke(progress);
                     phraseCount++;
 
@@ -239,7 +239,7 @@ namespace Meta.WitAi.TTS.Preload
 
             // Download
             string log = string.Empty;
-            service.DownloadToDiskCache(phraseData.textToSpeak, string.Empty, voiceSettings, cacheSettings, delegate(TTSClipData data, string path, string error)
+            service.DownloadToDiskCache(phraseData.textToSpeak, string.Empty, voiceSettings, cacheSettings, delegate (TTSClipData data, string path, string error)
             {
                 // Set phrase data
                 phraseData.clipID = data.clipID;

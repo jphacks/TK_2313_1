@@ -368,7 +368,7 @@ public class DebugUIBuilder : MonoBehaviour
         Slider s = rt.GetComponentInChildren<Slider>();
         s.minValue = min;
         s.maxValue = max;
-        s.onValueChanged.AddListener(delegate(float f) { onValueChanged(f); });
+        s.onValueChanged.AddListener(delegate (float f) { onValueChanged(f); });
         s.wholeNumbers = wholeNumbersOnly;
         AddRect(rt, targetCanvas);
         return rt;

@@ -18,7 +18,8 @@ namespace Meta.WitAi.TTS.Utilities
     public class TTSSpeechSplitter : MonoBehaviour, ISpeakerTextPreprocessor
     {
         [Tooltip("If text-to-speech phrase is greater than this length, it will be split.")]
-        [Range(10, 250)] [FormerlySerializedAs("maxTextLength")]
+        [Range(10, 250)]
+        [FormerlySerializedAs("maxTextLength")]
         public int MaxTextLength = 250;
 
         // Regex for cleaning out SAML

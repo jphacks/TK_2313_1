@@ -32,11 +32,11 @@ namespace Meta.Voice
         #region SIMULATION
         public static SimulatedResponse simulatedResponse;
         #endregion
-        
+
         /// <summary>
         /// The states of a voice request
         /// </summary>
-        public VoiceRequestState State { get; private set; } = (VoiceRequestState) (-1);
+        public VoiceRequestState State { get; private set; } = (VoiceRequestState)(-1);
         /// <summary>
         /// Active if not currently canceled, failed or successful
         /// </summary>
@@ -210,10 +210,10 @@ namespace Meta.Voice
         /// <param name="warning">True if this is a warning log</param>
         protected virtual void AppendLogData(StringBuilder log, bool warning)
         {
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             // Append request id
             log.AppendLine($"Request Id: {Options?.RequestId}");
-            #endif
+#endif
             // Append request state
             log.AppendLine($"Request State: {State}");
         }
@@ -271,7 +271,7 @@ namespace Meta.Voice
             Log($"Request Transmitting");
             RaiseEvent(Events?.OnSend);
         }
-        
+
         /// <summary>
         /// Child class send implementation
         /// Call HandleFailure, HandleCancel from this class

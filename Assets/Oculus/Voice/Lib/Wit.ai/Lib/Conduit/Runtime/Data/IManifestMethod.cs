@@ -13,7 +13,7 @@ namespace Meta.Conduit
         /// The parameters used by the action.
         /// </summary>
         List<ManifestParameter> Parameters { get; set; }
-        
+
         /// <summary>
         /// The fully qualified name of the assembly containing the code for the action.
         /// </summary>

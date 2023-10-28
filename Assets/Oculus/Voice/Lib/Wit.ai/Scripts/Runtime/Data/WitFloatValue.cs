@@ -28,7 +28,7 @@ namespace Meta.WitAi.Data
             {
                 fValue = f;
             }
-            else if(null != value && !float.TryParse("" + value, out fValue))
+            else if (null != value && !float.TryParse("" + value, out fValue))
             {
                 return false;
             }

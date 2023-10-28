@@ -17,7 +17,7 @@ namespace Meta.WitAi.Data.Info
         public WitEntityKeywordInfo(string keyword, List<string> synonyms = null)
         {
             this.keyword = keyword;
-            this.synonyms = synonyms??new List<string>();
+            this.synonyms = synonyms ?? new List<string>();
         }
 
         /// <summary>
@@ -27,9 +27,9 @@ namespace Meta.WitAi.Data.Info
         /// <summary>
         /// Synonyms for specified keyword
         /// </summary>
-        #if UNITY_2021_1_OR_NEWER
+#if UNITY_2021_1_OR_NEWER
         [UnityEngine.NonReorderable]
-        #endif
+#endif
         public List<string> synonyms;
 
         public override bool Equals(object obj)

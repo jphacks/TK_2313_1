@@ -148,7 +148,7 @@ namespace Meta.WitAi.Dictation
         }
     }
 
-    public interface IDictationService: ITelemetryEventsProvider
+    public interface IDictationService : ITelemetryEventsProvider
     {
         bool Active { get; }
 

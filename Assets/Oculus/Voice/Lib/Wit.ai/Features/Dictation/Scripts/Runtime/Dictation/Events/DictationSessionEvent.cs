@@ -15,6 +15,6 @@ namespace Meta.WitAi.Dictation.Events
     [Serializable]
     public class DictationSessionEvent : UnityEvent<DictationSession>
     {
-        
+
     }
 }

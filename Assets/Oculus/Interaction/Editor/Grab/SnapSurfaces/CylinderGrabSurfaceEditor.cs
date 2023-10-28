@@ -65,7 +65,7 @@ namespace Oculus.Interaction.Grab.GrabSurfaces.Editor
             float oldArcStart = _surface.ArcOffset;
             Quaternion look = Quaternion.LookRotation(_surface.GetPerpendicularDir(_relativeTo), _surface.GetDirection(_relativeTo));
             float newArcStart = DrawArcEditor(_surface, _arcStartHandle, _relativeTo,
-                oldArcStart,_surface.GetStartPoint(_relativeTo),
+                oldArcStart, _surface.GetStartPoint(_relativeTo),
                 look);
 
             _surface.ArcOffset = newArcStart;

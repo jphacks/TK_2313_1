@@ -19,7 +19,8 @@ namespace Meta.Voice.Samples.TTSVoices
     public class TTSSpeakerObserver : MonoBehaviour
     {
         [Header("Speaker Settings")]
-        [SerializeField] [Tooltip("TTSSpeaker being observed, if left empty it will grab the speaker from the GameObject")]
+        [SerializeField]
+        [Tooltip("TTSSpeaker being observed, if left empty it will grab the speaker from the GameObject")]
         private TTSSpeaker _speaker;
         public TTSSpeaker Speaker => _speaker;
 

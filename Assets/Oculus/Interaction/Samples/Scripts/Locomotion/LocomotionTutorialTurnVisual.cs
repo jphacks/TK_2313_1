@@ -193,7 +193,7 @@ namespace Oculus.Interaction.Samples
             bool isLeft = _value < 0;
             bool isRight = _value > 0;
 
-            Color activeColor = isSelection? _highligtedColor : _enabledColor;
+            Color activeColor = isSelection ? _highligtedColor : _enabledColor;
 
             _leftMaterialBlock.MaterialPropertyBlock.SetColor(_colorShaderPropertyID, isLeft ? activeColor : _disabledColor);
             _rightMaterialBlock.MaterialPropertyBlock.SetColor(_colorShaderPropertyID, isRight ? activeColor : _disabledColor);

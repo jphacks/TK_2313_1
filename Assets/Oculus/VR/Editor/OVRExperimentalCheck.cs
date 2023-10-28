@@ -76,43 +76,43 @@ class OVRExperimentalCheck : IPreprocessBuildWithReport
                     alt: "No, continue build"))
         {
             case 0:
-            {
-                var failedDevices = new List<string>();
-                foreach (var device in disabledDevices)
                 {
-                    var exitCode = adbTool.RunCommand(new[]
+                    var failedDevices = new List<string>();
+                    foreach (var device in disabledDevices)
                     {
+                        var exitCode = adbTool.RunCommand(new[]
+                        {
                         "-s", device,
                         "shell", "setprop", experimentalEnabledProp, "1"
                     }, null, out var stdout, out var stderr);
 
-                    if (exitCode != 0 || !string.IsNullOrEmpty(stdout))
-                    {
-                        failedDevices.Add(device);
-                        Debug.LogError(exitCode != 0
-                            ? $"Failed to enable {experimentalEnabledProp} on {device} with error code {exitCode}:\n{stderr}"
-                            : $"Failed to enable {experimentalEnabledProp} on {device}:\n{stdout}");
+                        if (exitCode != 0 || !string.IsNullOrEmpty(stdout))
+                        {
+                            failedDevices.Add(device);
+                            Debug.LogError(exitCode != 0
+                                ? $"Failed to enable {experimentalEnabledProp} on {device} with error code {exitCode}:\n{stderr}"
+                                : $"Failed to enable {experimentalEnabledProp} on {device}:\n{stdout}");
+                        }
+                        else
+                        {
+                            Debug.Log($"Successfully set {experimentalEnabledProp} to 1 on {device}.");
+                        }
                     }
-                    else
+
+                    if (failedDevices.Count > 0)
                     {
-                        Debug.Log($"Successfully set {experimentalEnabledProp} to 1 on {device}.");
+                        EditorUtility.DisplayDialog(menuTitle,
+                            $"Failed to set {experimentalEnabledProp} to 1 on the following devices: {string.Join(", ", failedDevices)}",
+                            "Ok");
                     }
-                }
 
-                if (failedDevices.Count > 0)
-                {
-                    EditorUtility.DisplayDialog(menuTitle,
-                        $"Failed to set {experimentalEnabledProp} to 1 on the following devices: {string.Join(", ", failedDevices)}",
-                        "Ok");
+                    break;
                 }
-
-                break;
-            }
             case 1:
-            {
-                throw new BuildFailedException(
-                    $"Build canceled because {experimentalEnabledProp} is not enabled on {string.Join(", ", disabledDevices)}.");
-            }
+                {
+                    throw new BuildFailedException(
+                        $"Build canceled because {experimentalEnabledProp} is not enabled on {string.Join(", ", disabledDevices)}.");
+                }
             case 2: break;
         }
     }

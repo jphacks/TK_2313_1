@@ -2,28 +2,32 @@
 
 namespace Oculus.Platform
 {
-  using System;
-  using System.Collections;
-  using Oculus.Platform.Models;
-  using System.Collections.Generic;
-  using UnityEngine;
+    using System;
+    using System.Collections;
+    using Oculus.Platform.Models;
+    using System.Collections.Generic;
+    using UnityEngine;
 
-  public class RichPresenceOptions {
+    public class RichPresenceOptions
+    {
 
-    public RichPresenceOptions() {
-      Handle = CAPI.ovr_RichPresenceOptions_Create();
+        public RichPresenceOptions()
+        {
+            Handle = CAPI.ovr_RichPresenceOptions_Create();
+        }
+
+
+        /// For passing to native C
+        public static explicit operator IntPtr(RichPresenceOptions options)
+        {
+            return options != null ? options.Handle : IntPtr.Zero;
+        }
+
+        ~RichPresenceOptions()
+        {
+            CAPI.ovr_RichPresenceOptions_Destroy(Handle);
+        }
+
+        IntPtr Handle;
     }
-
-
-    /// For passing to native C
-    public static explicit operator IntPtr(RichPresenceOptions options) {
-      return options != null ? options.Handle : IntPtr.Zero;
-    }
-
-    ~RichPresenceOptions() {
-      CAPI.ovr_RichPresenceOptions_Destroy(Handle);
-    }
-
-    IntPtr Handle;
-  }
 }

@@ -34,7 +34,7 @@ public class ImageViewer : EditorWindow
 
     private void OnGUI()
     {
-        if(null == _imageView) _imageView = new ImageView(this);
+        if (null == _imageView) _imageView = new ImageView(this);
         _imageView.Draw(_image);
     }
 }

@@ -30,7 +30,7 @@ namespace Meta.Voice.Hub.Utilities
                     }
                     catch
                     {
-                        return new Type[]{};
+                        return new Type[] { };
                     }
                 })
                 .Where(IsValidNamespace)

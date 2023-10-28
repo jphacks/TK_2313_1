@@ -550,7 +550,7 @@ namespace Meta.XR.BuildingBlocks.Editor
 
             if (canBeAdded)
             {
-            var addIcon = styles.AddIcon;
+                var addIcon = styles.AddIcon;
                 if (ShowLargeButton(addIcon))
                 {
                     block.AddToProject(block.RequireListRefreshAfterInstall ? RefreshBlockList : (Action)null);

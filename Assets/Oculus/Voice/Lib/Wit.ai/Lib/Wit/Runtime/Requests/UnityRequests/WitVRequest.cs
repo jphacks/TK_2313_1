@@ -220,11 +220,11 @@ namespace Meta.WitAi.Requests
             // Use server token
             if (useServerToken)
             {
-                #if UNITY_EDITOR
+#if UNITY_EDITOR
                 token = configuration.GetServerAccessToken();
-                #else
+#else
                 token = string.Empty;
-                #endif
+#endif
             }
             // Trim token
             if (!string.IsNullOrEmpty(token))
@@ -272,11 +272,11 @@ namespace Meta.WitAi.Requests
             userAgent.Append($",{_appIdentifier}");
 
             // Append editor identifier
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             userAgent.Append(",Editor");
-            #else
+#else
             userAgent.Append(",Runtime");
-            #endif
+#endif
 
             // Append unity version
             if (_unityVersion == null) _unityVersion = Application.unityVersion;

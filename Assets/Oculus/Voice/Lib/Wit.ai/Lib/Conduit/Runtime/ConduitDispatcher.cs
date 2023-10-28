@@ -121,10 +121,10 @@ namespace Meta.Conduit
                 // Only log if this is non-partial and inverse does not contain any matches either
                 if (!partial && filter.ResolveInvocationContexts(actionId, confidence, true).Count < 1)
                 {
-                   VLog.W(
-                        $"Failed to resolve {(partial ? "partial" : "final")} method for {actionId} with supplied context");
-                   InvokeError(actionId, new Exception($"Failed to resolve {(partial ? "partial" : "final")} method for {actionId} with supplied context")
-                   );
+                    VLog.W(
+                         $"Failed to resolve {(partial ? "partial" : "final")} method for {actionId} with supplied context");
+                    InvokeError(actionId, new Exception($"Failed to resolve {(partial ? "partial" : "final")} method for {actionId} with supplied context")
+                    );
                 }
 
                 return false;
@@ -144,7 +144,7 @@ namespace Meta.Conduit
                 {
                     VLog.W($"Failed to invoke {invocationContext.MethodInfo.Name}. {e}");
                     allSucceeded = false;
-                    InvokeError( invocationContext.MethodInfo.Name, e);
+                    InvokeError(invocationContext.MethodInfo.Name, e);
                 }
             }
 
@@ -188,7 +188,7 @@ namespace Meta.Conduit
 
                 if (parameterObjects[i] == null)
                 {
-                    InvokeError( invocationContext.MethodInfo.Name, new Exception(
+                    InvokeError(invocationContext.MethodInfo.Name, new Exception(
                             $"Failed to find method param while invoking\nType: {invocationContext.Type.FullName}\nMethod: {invocationContext.MethodInfo.Name}\nParameter Issues\n{log}"
                         ));
 
@@ -207,7 +207,7 @@ namespace Meta.Conduit
                 catch (Exception e)
                 {
                     VLog.W($"Failed to invoke static method {method.Name}. {e}");
-                    InvokeError( invocationContext.MethodInfo.Name, e);
+                    InvokeError(invocationContext.MethodInfo.Name, e);
                     return false;
                 }
 
@@ -226,7 +226,7 @@ namespace Meta.Conduit
                     {
                         VLog.W($"Failed to invoke method {method.Name}. {e} on {obj}");
                         allSucceeded = false;
-                        InvokeError( invocationContext.MethodInfo.Name,e);
+                        InvokeError(invocationContext.MethodInfo.Name, e);
                         continue;
                     }
                 }

@@ -108,7 +108,7 @@ namespace Oculus.Interaction.Input
         MiddleTip = 1 << HandJointId.HandMiddleTip,
         RingTip = 1 << HandJointId.HandRingTip,
         PinkyTip = 1 << HandJointId.HandPinkyTip,
-        All = (1 << HandJointId.HandEnd)-1
+        All = (1 << HandJointId.HandEnd) - 1
     }
 
     public static class HandFingerUtils

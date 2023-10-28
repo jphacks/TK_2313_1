@@ -22,21 +22,21 @@ namespace Meta.WitAi.Windows
             // Determine by ids
             switch (key)
             {
-                    case LocalizedTitleKey:
-                        string title = GetFieldStringValue(property, "name");
-                        if (!string.IsNullOrEmpty(title))
-                        {
-                            return title;
-                        }
-                        break;
-                    case "id":
-                        return WitTexts.Texts.ConfigurationEntitiesIdLabel;
-                    case "lookups":
-                        return WitTexts.Texts.ConfigurationEntitiesLookupsLabel;
-                    case "roles":
-                        return WitTexts.Texts.ConfigurationEntitiesRolesLabel;
-                    case "keywords":
-                        return WitTexts.Texts.ConfigurationEntitiesKeywordsLabel;
+                case LocalizedTitleKey:
+                    string title = GetFieldStringValue(property, "name");
+                    if (!string.IsNullOrEmpty(title))
+                    {
+                        return title;
+                    }
+                    break;
+                case "id":
+                    return WitTexts.Texts.ConfigurationEntitiesIdLabel;
+                case "lookups":
+                    return WitTexts.Texts.ConfigurationEntitiesLookupsLabel;
+                case "roles":
+                    return WitTexts.Texts.ConfigurationEntitiesRolesLabel;
+                case "keywords":
+                    return WitTexts.Texts.ConfigurationEntitiesKeywordsLabel;
             }
 
             // Default to base

@@ -61,7 +61,7 @@ internal class OVRStatusMenu : EditorWindow
             stretchHeight = true,
             fixedHeight = Styles.ItemHeight,
             padding = new RectOffset(LeftMargin + Padding, Padding, Padding, Padding),
-            margin = new RectOffset(0,0,0, Border),
+            margin = new RectOffset(0, 0, 0, Border),
             normal =
             {
                 background = OVREditorUtils.MakeTexture(1, 1, OVREditorUtils.HexToColor("#3e3e3e"))
@@ -89,7 +89,7 @@ internal class OVRStatusMenu : EditorWindow
             fixedWidth = 48 - Padding * 2,
             fixedHeight = 48 - Padding * 2,
             stretchHeight = true,
-            padding = new RectOffset(8,8,8,8),
+            padding = new RectOffset(8, 8, 8, 8),
         };
     }
 

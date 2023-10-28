@@ -30,7 +30,7 @@ namespace Meta.Voice.Hub.Utilities
         internal static MetaHubPageAttribute GetPageInfo(Type type)
         {
             var attributes = type.GetCustomAttributes(typeof(MetaHubPageAttribute), false);
-            return attributes.Length > 0 ? (MetaHubPageAttribute) attributes[0] : null;
+            return attributes.Length > 0 ? (MetaHubPageAttribute)attributes[0] : null;
         }
 
         internal static List<ScriptableObject> FindPages(Type t)
