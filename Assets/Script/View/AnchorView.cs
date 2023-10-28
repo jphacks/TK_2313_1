@@ -11,10 +11,13 @@ namespace View
         
         void Update()
         {
-            float distance = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(UserHandView.Instance.transform.position.x, UserHandView.Instance.transform.position.z));
-            if (distance < 0.75f)
+            if(GetComponent<OVRSpatialAnchor>().Created)
             {
-                ApiController.Instance.SendNearAnchorEvent(Uuid);
+                float distance = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(UserHandView.Instance.transform.position.x, UserHandView.Instance.transform.position.z));
+                if (distance < 0.75f)
+                {
+                    ApiController.Instance.SendNearAnchorEvent(Uuid);
+                }
             }
         }
     }

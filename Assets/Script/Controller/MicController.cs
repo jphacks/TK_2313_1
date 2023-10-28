@@ -13,7 +13,7 @@ namespace Controller
         void Start()
         {
             Instance = this;
-            StartMicRec();
+            //StartMicRec();
         }
 
         // Update is called once per frame
