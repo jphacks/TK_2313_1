@@ -4,7 +4,7 @@ namespace View
 {
     public class AIStatusView
     {
-        [SerializedField] MeshRenderer _headObjectRenderer;
+        [SerializeField] MeshRenderer _headObjectRenderer;
         public enum Status
         {
             Normal = 0, Listening, Thinking, Error
