@@ -10,7 +10,7 @@ namespace Controller
     {
         public static MicController Instance { get; private set; }
         private AudioClip _recordedClip;
-        [SerializedField] private AIStatusView _aIStatusView;
+        [SerializeField] private AIStatusView _aIStatusView;
         // Start is called before the first frame update
         void Start()
         {
