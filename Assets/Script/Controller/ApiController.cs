@@ -14,6 +14,7 @@ namespace Controller
 {
     public class ApiController : MonoBehaviour
     {
+        [SerialiceField] private AIStatusView _aIStatusView;
         [SerializeField] private CharacterVoiceView _characterVoiceView;
         public static ApiController Instance { get; private set; }
         [SerializeField] private string _wsEndPoint;
@@ -64,6 +65,7 @@ namespace Controller
                     //キャラクターを喋らせる
                     _mainThread.Post(_ =>
                     {
+                        _aIStatusView.CurrentStatus = AIStatusView.Normal;
                         _characterVoiceView.PlayAudioClip(clip);
                         
                     }, null);
