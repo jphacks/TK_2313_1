@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using View;
 using static OVRSpace;
 using static OVRSpatialAnchor;
 
@@ -12,11 +13,16 @@ public class SpatialAnchorManager : MonoBehaviour
     [SerializeField]
     public List<string> anchorUuids;
 
+    [SerializeField] private OVRSceneManager sceneManager;
+    
+    public bool isSceneLoaded { set; get; }
+
     // Start is called before the first frame update
     void Start()
     {
+        isSceneLoaded = false;
         anchorUuids = PlayerPerfsUtil.LoadList<string>("AnchorUuids");
-
+        sceneManager.SceneModelLoadedSuccessfully += OnSceneLoaded;
         List<Guid> temp = new List<Guid>();
         foreach (string uuid in anchorUuids)
         {
@@ -27,11 +33,16 @@ public class SpatialAnchorManager : MonoBehaviour
         OVRSpatialAnchor.LoadUnboundAnchors(new OVRSpatialAnchor.LoadOptions { StorageLocation = StorageLocation.Local, Uuids = temp }, OnUnboundAnchorsLoaded);
     }
 
+    void OnSceneLoaded()
+    {
+        isSceneLoaded = true;
+    }
+
     void OnUnboundAnchorsLoaded(UnboundAnchor[] unboundAnchors)
     {
         foreach (UnboundAnchor unboundAnchor in unboundAnchors)
         {
-            unboundAnchor.Localize(OnUnboundAnchorLocalized, 100.0);
+            unboundAnchor.Localize(OnUnboundAnchorLocalized);
         }
         Debug.Log("[Anchor test] Anchor Localized");
     }
@@ -44,7 +55,10 @@ public class SpatialAnchorManager : MonoBehaviour
             var spatialAnchor = Instantiate(anchorPrefab, pose.position, pose.rotation);
             //spatialAnchor.GetComponent<TextMeshProUGUI>().text = unboundAnchor.Uuid.ToString();
             unboundAnchor.BindTo(spatialAnchor);
-            Debug.Log("[Anchor test] Anchor binded");
+            var anchorView = spatialAnchor.gameObject.GetComponent<AnchorView>();
+            anchorView.Uuid = spatialAnchor.Uuid.ToString();
+            anchorView.binded = true;
+            Debug.Log($"[Anchor test] Anchor binded {spatialAnchor.Uuid}");
         }
     }
 }

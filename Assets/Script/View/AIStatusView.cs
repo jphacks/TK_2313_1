@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace View
 {
-    public class AIStatusView
+    public class AIStatusView : MonoBehaviour
     {
         [SerializeField] MeshRenderer _headObjectRenderer;
         public enum Status

@@ -23,7 +23,8 @@ public class DetectPintch : MonoBehaviour
     {
         if(hand.GetFingerIsPinching(OVRHand.HandFinger.Thumb) && !isRecording)
         {
-            StartCoroutine("waiting");
+            Debug.Log("Pintching");
+            StartCoroutine(waiting());
             micController.StartMicRec();
         }
     }
